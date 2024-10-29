@@ -1,0 +1,217 @@
+## Set - Definition
+
+A set is an unordered collection of different elements. A set can be written explicitly by listing its elements using set bracket. If the order of the elements is changed or any element of a set is repeated, it does not make any changes in the set.
+
+### Some Example of Sets
+
+- A set of all positive integers
+- A set of all the planets in the solar system
+- A set of all the states in India
+- A set of all the lowercase letters of the alphabet
+### Roster or Tabular Form
+
+The set is represented by listing all the elements comprising it. The elements are enclosed within braces and separated by commas.
+
+**Example 1** − Set of vowels in English alphabet, A={a,e,i,o,u}A={a,e,i,o,u}
+
+**Example 2** − Set of odd numbers less than 10, B={1,3,5,7,9}B={1,3,5,7,9}
+
+### Set Builder Notation
+
+The set is defined by specifying a property that elements of the set have in common. The set is described as A={x:p(x)}A={x:p(x)}
+
+**Example 1** − The set {a,e,i,o,u}{a,e,i,o,u} is written as −
+
+A={x:x is a vowel in English alphabet}A={x:x is a vowel in English alphabet}
+
+**Example 2** − The set {1,3,5,7,9}{1,3,5,7,9} is written as −
+
+B={x:1≤x<10 and (x%2)≠0}B={x:1≤x<10 and (x%2)≠0}
+
+If an element x is a member of any set S, it is denoted by x∈Sx∈S and if an element y is not a member of set S, it is denoted by y∉Sy∉S.
+
+**Example** − If S={1,1.2,1.7,2},1∈SS={1,1.2,1.7,2},1∈S but 1.5∉S
+
+### Some Important Sets
+
+**N** − the set of all natural numbers = {1,2,3,4,.....}{1,2,3,4,.....}
+
+**Z** − the set of all integers = {.....,−3,−2,−1,0,1,2,3,.....}{.....,−3,−2,−1,0,1,2,3,.....}
+
+**Z+** − the set of all positive integers
+
+**Q** − the set of all rational numbers
+
+**R** − the set of all real numbers
+
+**W** − the set of all whole numbers
+
+## Cardinality of a Set
+
+Cardinality of a set S, denoted by |S||S|, is the number of elements of the set. The number is also referred as the cardinal number. If a set has an infinite number of elements, its cardinality is ∞∞.
+
+## Types of Sets
+
+Sets can be classified into many types. Some of which are finite, infinite, subset, universal, proper, singleton set, etc.
+
+### Finite Set
+
+A set which contains a definite number of elements is called a finite set.
+
+**Example** − S={x|x∈NS={x|x∈N and 70>x>50}70>x>50}
+
+### Infinite Set
+
+A set which contains infinite number of elements is called an infinite set.
+
+**Example** − S={x|x∈NS={x|x∈N and x>10}x>10}
+
+### Subset
+
+A set X is a subset of set Y (Written as X⊆YX⊆Y) if every element of X is an element of set Y.
+
+**Example 1** − Let, X={1,2,3,4,5,6}X={1,2,3,4,5,6} and Y={1,2}Y={1,2}. Here set Y is a subset of set X as all the elements of set Y is in set X. Hence, we can write Y⊆XY⊆X.
+
+**Example 2** − Let, X={1,2,3}X={1,2,3} and Y={1,2,3}Y={1,2,3}. Here set Y is a subset (Not a proper subset) of set X as all the elements of set Y is in set X. Hence, we can write Y⊆XY⊆X.
+
+### Proper Subset
+
+The term “proper subset” can be defined as “subset of but not equal to”. A Set X is a proper subset of set Y (Written as X⊂YX⊂Y) if every element of X is an element of set Y and |X|<|Y||X|<|Y|.
+
+**Example** − Let, X={1,2,3,4,5,6}X={1,2,3,4,5,6} and Y={1,2}Y={1,2}. Here set Y⊂XY⊂X since all elements in YY are contained in XX too and XX has at least one element is more than set YY.
+
+### Universal Set
+
+It is a collection of all elements in a particular context or application. All the sets in that context or application are essentially subsets of this universal set. Universal sets are represented as UU.
+
+**Example** − We may define UU as the set of all animals on earth. In this case, set of all mammals is a subset of UU, set of all fishes is a subset of UU, set of all insects is a subset of UU, and so on.
+
+### Empty Set or Null Set
+
+An empty set contains no elements. It is denoted by ∅∅. As the number of elements in an empty set is finite, empty set is a finite set. The cardinality of empty set or null set is zero.
+
+**Example** − S={x|x∈NS={x|x∈N and 7<x<8}=∅
+
+### Equal Set
+
+If two sets contain the same elements they are said to be equal.
+
+**Example** − If A={1,2,6}A={1,2,6} and B={6,1,2}B={6,1,2}, they are equal as every element of set A is an element of set B and every element of set B is an element of set A.
+
+### Equivalent Set
+
+If the cardinalities of two sets are same, they are called equivalent sets.
+
+**Example** − If A={1,2,6}A={1,2,6} and B={16,17,22}B={16,17,22}, they are equivalent as cardinality of A is equal to the cardinality of B. i.e. |A|=|B|=3|A|=|B|=3
+
+### Overlapping Set
+
+Two sets that have at least one common element are called overlapping sets.
+
+In case of overlapping sets −
+
+- n(A∪B)=n(A)+n(B)−n(A∩B)n(A∪B)=n(A)+n(B)−n(A∩B)
+    
+- n(A∪B)=n(A−B)+n(B−A)+n(A∩B)n(A∪B)=n(A−B)+n(B−A)+n(A∩B)
+    
+- n(A)=n(A−B)+n(A∩B)n(A)=n(A−B)+n(A∩B)
+    
+- n(B)=n(B−A)+n(A∩B)n(B)=n(B−A)+n(A∩B)
+    
+
+**Example** − Let, A={1,2,6}A={1,2,6} and B={6,12,42}B={6,12,42}. There is a common element ‘6’, hence these sets are overlapping sets.
+
+### Disjoint Set
+
+Two sets A and B are called disjoint sets if they do not have even one element in common. Therefore, disjoint sets have the following properties −
+
+- n(A∩B)=∅n(A∩B)=∅
+    
+- n(A∪B)=n(A)+n(B)n(A∪B)=n(A)+n(B)
+    
+
+**Example** − Let, A={1,2,6}A={1,2,6} and B={7,9,14}B={7,9,14}, there is not a single common element, hence these sets are overlapping sets.
+
+## Venn Diagrams
+
+Venn diagram, invented in 1880 by John Venn, is a schematic diagram that shows all possible logical relations between different mathematical sets.
+
+**Examples**
+![[Pasted image 20240923081428.png]]
+
+## Set Operations
+
+Set Operations include Set Union, Set Intersection, Set Difference, Complement of Set, and Cartesian Product.
+
+### Set Union
+
+The union of sets A and B (denoted by A∪BA∪B) is the set of elements which are in A, in B, or in both A and B. Hence, A∪B={x|x∈A OR x∈B}A∪B={x|x∈A OR x∈B}.
+
+**Example** − If A={10,11,12,13}A={10,11,12,13} and B = {13,14,15}{13,14,15}, then A∪B={10,11,12,13,14,15}A∪B={10,11,12,13,14,15}. (The common element occurs only once)
+
+![Set Union](https://www.tutorialspoint.com/discrete_mathematics/images/set_union.jpg)
+
+### Set Intersection
+
+The intersection of sets A and B (denoted by A∩BA∩B) is the set of elements which are in both A and B. Hence, A∩B={x|x∈A AND x∈B}A∩B={x|x∈A AND x∈B}.
+
+**Example** − If A={11,12,13}A={11,12,13} and B={13,14,15}B={13,14,15}, then A∩B={13}A∩B={13}.
+
+![Set Intersection](https://www.tutorialspoint.com/discrete_mathematics/images/set_intersection.jpg)
+
+### Set Difference/ Relative Complement
+
+The set difference of sets A and B (denoted by A–BA–B) is the set of elements which are only in A but not in B. Hence, A−B={x|x∈A AND x∉B}A−B={x|x∈A AND x∉B}.
+
+**Example** − If A={10,11,12,13}A={10,11,12,13} and B={13,14,15}B={13,14,15}, then (A−B)={10,11,12}(A−B)={10,11,12} and (B−A)={14,15}(B−A)={14,15}. Here, we can see (A−B)≠(B−A)(A−B)≠(B−A)
+
+![Set Difference](https://www.tutorialspoint.com/discrete_mathematics/images/set_difference.jpg)
+
+### Complement of a Set
+
+The complement of a set A (denoted by A′) is the set of elements which are not in set A. Hence, A′={x|x∉A}A′={x|x∉A}.
+
+More specifically, A′=(U−A)A′=(U−A) where UU is a universal set which contains all objects.
+
+**Example** − If A={x|x belongstosetofoddintegers}A={x|x belongstosetofoddintegers} then A′={y|y doesnotbelongtosetofoddintegers}A′={y|y doesnotbelongtosetofoddintegers}
+
+![Complement Set](https://www.tutorialspoint.com/discrete_mathematics/images/complement_set.jpg)
+
+### Cartesian Product / Cross Product
+
+The Cartesian product of n number of sets A1,A2,…AnA1,A2,…An denoted as A1×A2⋯×AnA1×A2⋯×An can be defined as all possible ordered pairs (x1,x2,…xn)(x1,x2,…xn) where x1∈A1,x2∈A2,…xn∈Anx1∈A1,x2∈A2,…xn∈An
+
+**Example** − If we take two sets A={a,b}A={a,b} and B={1,2}B={1,2},
+
+The Cartesian product of A and B is written as − A×B={(a,1),(a,2),(b,1),(b,2)}A×B={(a,1),(a,2),(b,1),(b,2)}
+
+The Cartesian product of B and A is written as − B×A={(1,a),(1,b),(2,a),(2,b)}
+
+## Power Set
+
+Power set of a set S is the set of all subsets of S including the empty set. The cardinality of a power set of a set S of cardinality n is 2n2n. Power set is denoted as P(S)P(S).
+
+**Example −**
+
+For a set S={a,b,c,d}S={a,b,c,d} let us calculate the subsets −
+
+- Subsets with 0 elements − {∅}{∅} (the empty set)
+    
+- Subsets with 1 element − {a},{b},{c},{d}{a},{b},{c},{d}
+    
+- Subsets with 2 elements − {a,b},{a,c},{a,d},{b,c},{b,d},{c,d}{a,b},{a,c},{a,d},{b,c},{b,d},{c,d}
+    
+- Subsets with 3 elements − {a,b,c},{a,b,d},{a,c,d},{b,c,d}{a,b,c},{a,b,d},{a,c,d},{b,c,d}
+    
+- Subsets with 4 elements − {a,b,c,d}{a,b,c,d}
+    
+
+Hence, P(S)=P(S)=
+
+{{∅},{a},{b},{c},{d},{a,b},{a,c},{a,d},{b,c},{b,d},{c,d},{a,b,c},{a,b,d},{a,c,d},{b,c,d},{a,b,c,d}}{{∅},{a},{b},{c},{d},{a,b},{a,c},{a,d},{b,c},{b,d},{c,d},{a,b,c},{a,b,d},{a,c,d},{b,c,d},{a,b,c,d}}
+
+|P(S)|=24=16|P(S)|=24=16
+
+**Note** − The power set of an empty set is also an empty set.
+
+|P({∅})|=20=1
