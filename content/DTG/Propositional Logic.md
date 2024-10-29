@@ -1,6 +1,7 @@
 ## Connectives
 
-In propositional logic generally we use five connectives which are lol
+In propositional logic generally we use five connectives which are lol dsadas ad
+asfs
 
 - OR (∨)
 
