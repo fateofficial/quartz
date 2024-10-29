@@ -3,12 +3,17 @@
 In propositional logic generally we use five connectives which are −
 
 - OR (∨)
- ![[Pasted image 20240923080226.png]]
+
+ 
+![[Pasted image 20240923080226.png]]
 - AND (∧)
+
 ![[Pasted image 20240923080244.png]]
 - Negation/ NOT (¬)
- ![[Pasted image 20240923080251.png]]
+
+![[Pasted image 20240923080251.png]]
 - Implication / if-then (→)
+
 ![[Pasted image 20240923080303.png]]
 - If and only if (⇔).
 
