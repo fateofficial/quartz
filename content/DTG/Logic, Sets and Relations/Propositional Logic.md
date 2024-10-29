@@ -1,15 +1,37 @@
+A proposition is a declarative sentence (that is, a sentence that declares a fact) that is either true or false, but not both.
+We use letters to denote propositional variables(or sentential variables), that is, variables that represent propositions, just as letters are used to denote numerical variables. The conventional letters used for propositional variables are p, q, r, s, … . The truth value of a proposition
+
+A proposition that cannot be broken into smaller propositions are atomic propositions
+## Negation operator
+
+The negation operator constructs a new proposition from a single existing proposition
+If true proposition is negated then it would result in false truth value
+
+| p   | $\neg p$ |
+| --- | -------- |
+| T   | F        |
+| F   | T        |
+
 ## Connectives
 
-In propositional logic generally we use five connectives which are lol dsadas ad
-asfs
+
+Let p and q be propositions. The conjunction of p and q, denoted by p ∧ q, is the proposition “p and q.” The conjunction p ∧ q is true when both p and q are true and is false otherwise.
 
 - OR (∨)
 
+| $p$ | $q$ | $p\land q$ |
+| --- | --- | ---------- |
+| $T$ | $T$ | $T$        |
+| $T$ | $F$ | $F$        |
+| $F$ | $T$ | $F$        |
+| $F$ | $F$ | $F$        |
+
+
  
-![[Pasted image 20240923080226.png]]
+
 - AND (∧)
 
-![[Pasted image 20240923080244.png]]
+![[]]
 - Negation/ NOT (¬)
 
 ![[Pasted image 20240923080251.png]]
