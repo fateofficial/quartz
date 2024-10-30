@@ -3,21 +3,20 @@ We use letters to denote propositional variables(or sentential variables), that 
 
 A proposition that cannot be broken into smaller propositions are atomic propositions
 ## Negation operator
-
 The negation operator constructs a new proposition from a single existing proposition
 If true proposition is negated then it would result in false truth value
 
-| p   | $\neg p$ |
+| $p$ | $\neg p$ |
 | --- | -------- |
-| T   | F        |
-| F   | T        |
+| $T$ | $F$      |
+| $F$ | $T$      |
 
 ## Connectives
 
-
+### OR (∨)
 Let p and q be propositions. The conjunction of p and q, denoted by p ∧ q, is the proposition “p and q.” The conjunction p ∧ q is true when both p and q are true and is false otherwise.
 
-- OR (∨)
+Truth table:
 
 | $p$ | $q$ | $p\land q$ |
 | --- | --- | ---------- |
@@ -29,10 +28,9 @@ Let p and q be propositions. The conjunction of p and q, denoted by p ∧ q, is 
 
  
 
-- AND (∧)
+### AND (∧)
 
-![[]]
-- Negation/ NOT (¬)
+### Negation/ NOT (¬)
 
 ![[Pasted image 20240923080251.png]]
 - Implication / if-then (→)
