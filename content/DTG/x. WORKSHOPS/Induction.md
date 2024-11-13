@@ -1,4 +1,5 @@
 
+# 1
 Assume that Merge uses (exactly) $a + b - 1$ comparisons to combine two lists with $a$ and $b$ elements. Furthermore, assume that the length of the input list $L$ is $n = 2^k$. Prove by using induction on $k$, that Mergesort uses $n(\log_2(n) + 1) = 2^k(k + 1)$ comparisons to sort $L$. What type of induction did you use?
 
 Base Case: $k=0$
@@ -40,3 +41,6 @@ This does not match the formula $2^m + 1((m+1) + 1)$. There's an error in the pr
 Conclusion
 The inductive step has a flaw and thus the conclusion cannot be reached.  There's an error in the problem statement or the inductive step.
 This was an attempt at mathematical induction, where we assume the statement is true for $k=m$ and prove it for $k=m+1$.
+# 2 
+
+
