@@ -105,32 +105,41 @@ LinSearch needed: 19.4500000s
 LinSearch: 7000 is not in the list
 BinSearch: 7000 is not in the list
 ```
-
 ## 3.
-
-```tikz
-\begin{axis}[
-    xlabel={Element Position in List},
-    ylabel={Time Taken (s)},
-    legend pos=north west,
-    grid=both,
-]
-    % Linear Search
-    \addplot coordinates {
-        (7, 0.015) 
-        (899, 2.055)
-        (3000, 6.625)
-        (8991, 19.846)
-    };
-    \addlegendentry{Linear Search}
-
-    % Binary Search
-    \addplot coordinates {
-        (7, 0.078) 
-        (899, 0.063)
-        (3000, 0.079)
-        (8991, 0.062)
-    };
-    \addlegendentry{Binary Search}
-\end{axis}
+The elements 7, 899, 3000 and 8991 are all contained in the list List9000.txt. Compare how long the different algorithms need to find them.
 ```
+search(9000,7);
+BinSearch needed: 0.0590000s
+LinSearch needed: 0.0090000s
+LinSearch: 7 is in position 5
+BinSearch: 7 is in position 5
+
+search(9000,899);
+BinSearch needed: 0.0640000s
+LinSearch needed: 2.0840000s
+LinSearch: 899 is in position 896
+BinSearch: 899 is in position 896
+
+search(9000,3000);
+BinSearch needed: 0.0610000s
+LinSearch needed: 6.7380000s
+LinSearch: 3000 is in position 2990
+BinSearch: 3000 is in position 2990
+
+search(9000,8991);
+The size of the list is 9000
+BinSearch needed: 0.0600000s
+LinSearch needed: 20.4520000s
+LinSearch: 8991 is in position 8974
+BinSearch: 8991 is in position 8974
+
+```
+
+## 4.
+Take note of how long the algorithms take for the different lists and plot list size on the x-axis and the time it took on the y-axis.
+
+For one million runs of bin bin search on a list with 9000, the time it takes is around 0.06 seconds.
+
+For binary search however it drastically increases depending on the location and worst case ended up taking as much as circa 20.5 seconds.
+
+![[Figure_1 1.png]]
