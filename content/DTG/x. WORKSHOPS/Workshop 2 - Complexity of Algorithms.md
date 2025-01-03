@@ -303,7 +303,7 @@ Because of the while loop in binary search, there are only two results of the ma
 
 As seen m is the middle point it takes both the left pointer and right pointer and finds the middle ground.
 
-If x the value searched for is bigger than list[m], which is the value of the middle index then discard the indexes that are lower, by setting i to m+1, which moves the lower pointer to middle index +1. However if x is not striclty  greater than then the upper pointer becomes m and therefore discard all higher values.
+If x the value searched for is bigger than list[m], which is the value of the middle index then discard the indexes that are lower, by setting i to m+1, which moves the lower pointer to middle index +1. However if x is not strictly  greater than then the upper pointer becomes m and therefore discard all higher values.
 
 
 iv)
