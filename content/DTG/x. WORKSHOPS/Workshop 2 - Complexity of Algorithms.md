@@ -187,7 +187,8 @@ To show that the number of comparisons in the worst case for linear search is in
 Simplify Using $\Theta$-Notation Rules In $\Theta$-notation, constants and lower-order terms are ignored because we focus on the asymptotic growth rate Therefore: $$f(n) = 2n + 2 \quad \implies \quad f(n) \in \Theta(n)$$
 The number of comparisons in the worst case for linear search grows linearly with $n$, so it is in $\Theta(n)$
 
-To show that the number of comparisons in the worst case for linear search is in $\Theta(n)$, we need to demonstrate that the number of comparisons grows linearly with $n$ and find appropriate constants to satisfy the definition of $\Theta$-notation.
+
+#proof
 
 ### Step 1: Define the Function
 
@@ -241,9 +242,8 @@ $\text{The number of comparisons in the worst case for linear search is in } \Th
 
 
 ## 3. 
-Consider the binary search algorithm and assume that the list has length n = 2k .
 
-
+#algorithm 
 **procedure:** BinarySearch($x$: element, $(a_0, a_1, \dots, a_{n-1})$: list)  
 $i := 0$  
 $j := n - 1$  
@@ -255,3 +255,44 @@ $j := n - 1$
 **if** $x = a_i$:  
     **then return** $i$  
 **else return** $-1$
+Consider the binary search algorithm and assume that the list has length n = 2k .
+
+### i)
+Check that every full iteration of the while loop uses two comparisons.
+
+In the while statement two comparisons are used.
+i < j 
+For checking if search is finished,
+x > a_m 
+Checks which side to discard, lower or higher values.
+
+### ii)
+Assume the list has length $n = 2^k$.
+
+1. Initialize: 
+   - $i := 0$
+   - $j := n - 1$
+
+2. The middle index $m$ is calculated as:
+   $$
+   m = \left\lfloor \frac{i + j}{2} \right\rfloor = \left\lfloor \frac{n-1}{2} \right\rfloor
+$$
+
+3. Substituting $n = 2^k$:
+   $$
+   m = \left\lfloor \frac{2^k - 1}{2} \right\rfloor = \left\lfloor 2^{k-1} - \frac{1}{2} \right\rfloor 
+$$
+
+Because of the lower bounded brackets, it is rounded down to -1.
+
+$$ \left\lfloor 2^{k-1} - \frac{1}{2} \right\rfloor = 2^{k-1} - 1
+$$
+
+
+Thus, in the first iteration, $m = 2^{k-1} - 1$.
+
+### iii)
+
+
+
+
