@@ -267,6 +267,7 @@ x > a_m
 Checks which side to discard, lower or higher values.
 
 ### ii)
+Show that in the first iteration of the while loop $m = 2k^{- 1} - 1$
 Assume the list has length $n = 2^k$.
 
 1. Initialize: 
@@ -307,4 +308,40 @@ If x the value searched for is bigger than list[m], which is the value of the mi
 
 
 iv)
+Check that we have to half the list $\log_2(n)$ times to end up with a list of just one element. (Remember that we assume $n = 2^k$.)
+
+$$\log_2(n) = \log_2(2^k)$$ By applying the logarithmic identity $\log_b(x^m) = m \cdot \log_b(x)$, we get:
+$$\log_2(2^k) = k \cdot \log_2(2)$$ Since $\log_2(2) = 1$, this simplifies to: 
+$$\log_2(n) = k$$ Thus, the number of halvings required to reduce the list of size $n = 2^k$ to one element is $k$.
+
+ This shows that it takes exactly $\log_2(n)$ halvings to reduce the list to one element, where $n$ is a power of 2. If $n$ is not a power of 2, the number of halvings will be approximately $\log_2(n)$, but there will be some rounding or fractional values since $\log_2(n)$ may not be an integer.
+
+v)
+Show that the number of comparisons needed for binary search is $\Theta(\log_2(n))$
+Main loop contains two comparisons and runs $\log_2(n)$ times as stated above.
+
+while $i < j$:  
+    $m := \lfloor \frac{i + j}{2} \rfloor$  
+    **if** $x > a_m$:  
+        **then** $i := m + 1$  
+    **else** $j := m$  
+
+As stated above these for loops runs with two comparisons every time which is 2n.
+The loop run however again for the last check where it is false so that is +1 comparison.
+Total: $2\cdot \log_2(n)+1$
+
+
+**if** $x = a_i$:  
+    **then return** $i$  
+
+When the for loop has ended and with the last comparison which is false this if statement is checked to see if element divided to is the element searched for, which is +1 comparisons.
+
+Total: $2\cdot \log_2(n)+2$
+
+
+
+
+
+
+
 
