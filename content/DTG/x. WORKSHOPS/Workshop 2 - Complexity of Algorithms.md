@@ -152,7 +152,7 @@ BinSearch: 8991 is in position 8974
 ## 4.
 Take note of how long the algorithms take for the different lists and plot list size on the x-axis and the time it took on the y-axis.
 
-For one million runs of bin bin search on a list with 9000, the time it takes is around 0.06 seconds.
+For one million runs of bin search on a list with 9000, the time it takes is around 0.06 seconds.
 
 For binary search however it drastically increases depending on the location and worst case ended up taking as much as circa 20.5 seconds.
 
@@ -171,7 +171,7 @@ $i := 0$
     **then return** $i$  
 **else return** $-1$
 
-
+In the case of not found or last element:
 Binary search checks the while loop which is a comparison 2n times because of the  **while** $i < n \ \text{AND} \ x \neq a_i$
 So 2n comparisons are already made now the last 2 comparisons come for the closing iteration, the n+1 iteration.
 Here the first comparison in the while loop fail and go directly to if statement, which is one comparison.
