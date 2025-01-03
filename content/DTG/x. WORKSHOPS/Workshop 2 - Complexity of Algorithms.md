@@ -212,7 +212,7 @@ $$
 $$
 Thus, the upper bound is satisfied with $c_2 = 4$.
 
-#### Lower Bound:
+
 Next, we want to show that $f(n) \geq c_1 \cdot n$ for some constant $c_1$. Again, using $f(n) = 2n + 2$, we get:
 $$
 2n + 2 \geq c_1 \cdot n
@@ -222,8 +222,6 @@ $$
 2n + 2 \geq 2n \quad \text{for all } n \geq 1
 $$
 Thus, the lower bound is satisfied with $c_1 = 2$.
-
-### Step 4: Conclusion
 
 We have shown that for sufficiently large $n$, say for $n \geq 1$, the function $f(n) = 2n + 2$ satisfies:
 $$
