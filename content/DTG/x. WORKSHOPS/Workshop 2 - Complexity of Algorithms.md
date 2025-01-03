@@ -294,7 +294,17 @@ Thus, in the first iteration, $m = 2^{k-1} - 1$.
 ### iii)
 Argue that after the first time the while loop has run we have excluded half the elements of the list.
 
+Because of the while loop in binary search, there are only two results of the main loop.
+**while** $i < j$:  
+    $m := \lfloor \frac{i + j}{2} \rfloor$  
+    **if** $x > a_m$:  
+        **then** $i := m + 1$  
+    **else** $j := m$  
+
+As seen m is the middle point it takes both the left pointer and right pointer and finds the middle ground.
+
+If x the value searched for is bigger than list[m], which is the value of the middle index then discard the indexes that are lower, by setting i to m+1, which moves the lower pointer to middle index +1. However if x is not striclty  greater than then the upper pointer becomes m and therefore discard all higher values.
 
 
-
+iv)
 
