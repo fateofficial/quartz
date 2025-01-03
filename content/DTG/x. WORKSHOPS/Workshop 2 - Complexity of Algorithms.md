@@ -292,6 +292,8 @@ $$
 Thus, in the first iteration, $m = 2^{k-1} - 1$.
 
 ### iii)
+Argue that after the first time the while loop has run we have excluded half the elements of the list.
+
 
 
 
