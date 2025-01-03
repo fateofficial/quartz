@@ -2,6 +2,20 @@ A search function takes as inputs a list $(a_0, \dots, a_{n-1})$ and an element 
 
 ![[Pasted image 20241228132247.png]]
 
+The term **asymptotic** refers to the behavior of a function as its input approaches some limit, usually as n (typically the size of the input) becomes very large
+
+| Notation | Meaning                                            | Description                                                                       |
+| -------- | -------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Big O    | Upper bound (asymptotic upper limit)               | Function grows at most as fast as g(n)g(n)g(n), but it may grow at the same rate. |
+| Small o  | Strict upper bound (asymptotic strict upper limit) | Function grows strictly slower than g(n)g(n)g(n); the ratio approaches zero.      |
+
+| Notation  | Bound Type            | Definition                                     | Example                | Interpretation                          |
+| --------- | --------------------- | ---------------------------------------------- | ---------------------- | --------------------------------------- |
+| Big-O     | Upper bound           | $f(n) \leq c \cdot g(n)$ for large $n$         | $3n + 2 \in O(n)$      | $f(n)$ grows no faster than $g(n)$      |
+| Big-Omega | Lower bound           | $f(n) \geq c \cdot g(n)$ for large $n$         | $n^2 \in \Omega(n)$    | $f(n)$ grows at least as fast as $g(n)$ |
+| Big-Theta | Upper and Lower bound | $c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)$ | $2n + 3 \in \Theta(n)$ | $f(n)$ grows exactly like $g(n)$        |
+
+
 
 
 
@@ -172,6 +186,60 @@ To show that the number of comparisons in the worst case for linear search is in
 
 Simplify Using $\Theta$-Notation Rules In $\Theta$-notation, constants and lower-order terms are ignored because we focus on the asymptotic growth rate Therefore: $$f(n) = 2n + 2 \quad \implies \quad f(n) \in \Theta(n)$$
 The number of comparisons in the worst case for linear search grows linearly with $n$, so it is in $\Theta(n)$
+
+To show that the number of comparisons in the worst case for linear search is in $\Theta(n)$, we need to demonstrate that the number of comparisons grows linearly with $n$ and find appropriate constants to satisfy the definition of $\Theta$-notation.
+
+### Step 1: Define the Function
+
+Let $f(n)$ represent the number of comparisons in the worst case for linear search, where $n$ is the size of the input list. In the worst case, we perform $2n + 2$ comparisons:
+$$
+f(n) = 2n + 2
+$$
+
+### Step 2: Show that $f(n) \in \Theta(n)$
+
+To prove that $f(n) \in \Theta(n)$, we need to find constants $c_1$, $c_2$, and $n_0$ such that for all $n \geq n_0$, the following inequality holds:
+$$
+c_1 \cdot n \leq f(n) \leq c_2 \cdot n
+$$
+
+### Step 3: Find the Constants
+
+#### Upper Bound:
+We want to show that $f(n) \leq c_2 \cdot n$ for some constant $c_2$. From $f(n) = 2n + 2$, we get:
+$$
+2n + 2 \leq c_2 \cdot n
+$$
+For large $n$, we can choose $c_2 = 4$, because:
+$$
+2n + 2 \leq 4n \quad \text{for all } n \geq 1
+$$
+Thus, the upper bound is satisfied with $c_2 = 4$.
+
+#### Lower Bound:
+Next, we want to show that $f(n) \geq c_1 \cdot n$ for some constant $c_1$. Again, using $f(n) = 2n + 2$, we get:
+$$
+2n + 2 \geq c_1 \cdot n
+$$
+This inequality holds for $c_1 = 2$, because:
+$$
+2n + 2 \geq 2n \quad \text{for all } n \geq 1
+$$
+Thus, the lower bound is satisfied with $c_1 = 2$.
+
+### Step 4: Conclusion
+
+We have shown that for sufficiently large $n$, say for $n \geq 1$, the function $f(n) = 2n + 2$ satisfies:
+$$
+2n \leq 2n + 2 \leq 4n
+$$
+Therefore, $f(n) \in \Theta(n)$, as required.
+
+
+$\text{The number of comparisons in the worst case for linear search is in } \Theta(n).$
+
+
+
 ## 3. 
 Consider the binary search algorithm and assume that the list has length n = 2k .
 
