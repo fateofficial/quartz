@@ -31,7 +31,7 @@ Every value in the codomain is at least mapped by one in the codomain. because i
 | **Bijective**  | A function that is both injective and surjective, meaning every element in the domain maps to a unique element in the codomain, and every element in the codomain is covered. |     |
 
 
-# Exercise 3
+# Exercise 2
 ## 1.
 Implement the two algorithms in the provided file SearchCompare.c.
 
@@ -143,3 +143,47 @@ For one million runs of bin bin search on a list with 9000, the time it takes is
 For binary search however it drastically increases depending on the location and worst case ended up taking as much as circa 20.5 seconds.
 
 ![[Figure_1 1.png]]
+
+# Exercise 2
+
+## 1. 
+Argue that the linear search algorithm will use 2n + 2 comparisons in the worst case. Describe the inputs for which this will happen.
+
+**procedure:** LinearSearch($x$: element, $(a_0, a_1, \dots, a_{n-1})$: list)  
+$i := 0$  
+**while** $i < n \ \text{AND} \ x \neq a_i$:  
+    $i := i + 1$  
+**if** $i < n$:  
+    **then return** $i$  
+**else return** $-1$
+
+
+Binary search checks the while loop which is a comparison 2n times because of the  **while** $i < n \ \text{AND} \ x \neq a_i$
+So 2n comparisons are already made now the last 2 comparisons come for the closing iteration, the n+1 iteration.
+Here the first comparison in the while loop fail and go directly to if statement, which is one comparison.
+Then the closing if statement to check if a value is found is the last comparisons.
+In total it is 2n+2 comparisons.
+
+
+## 2.
+Show that the number of comparisons in the worst case for linear search is in Θ(n).
+
+To show that the number of comparisons in the worst case for linear search is in Θ(n)
+
+Simplify Using $\Theta$-Notation Rules In $\Theta$-notation, constants and lower-order terms are ignored because we focus on the asymptotic growth rate Therefore: $$f(n) = 2n + 2 \quad \implies \quad f(n) \in \Theta(n)$$
+The number of comparisons in the worst case for linear search grows linearly with $n$, so it is in $\Theta(n)$
+## 3. 
+Consider the binary search algorithm and assume that the list has length n = 2k .
+
+
+**procedure:** BinarySearch($x$: element, $(a_0, a_1, \dots, a_{n-1})$: list)  
+$i := 0$  
+$j := n - 1$  
+**while** $i < j$:  
+    $m := \lfloor \frac{i + j}{2} \rfloor$  
+    **if** $x > a_m$:  
+        **then** $i := m + 1$  
+    **else** $j := m$  
+**if** $x = a_i$:  
+    **then return** $i$  
+**else return** $-1$
