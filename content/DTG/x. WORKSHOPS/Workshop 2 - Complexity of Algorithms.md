@@ -190,23 +190,18 @@ The number of comparisons in the worst case for linear search grows linearly wit
 
 #proof
 
-### Step 1: Define the Function
-
 Let $f(n)$ represent the number of comparisons in the worst case for linear search, where $n$ is the size of the input list. In the worst case, we perform $2n + 2$ comparisons:
 $$
 f(n) = 2n + 2
 $$
 
-### Step 2: Show that $f(n) \in \Theta(n)$
 
 To prove that $f(n) \in \Theta(n)$, we need to find constants $c_1$, $c_2$, and $n_0$ such that for all $n \geq n_0$, the following inequality holds:
 $$
 c_1 \cdot n \leq f(n) \leq c_2 \cdot n
 $$
 
-### Step 3: Find the Constants
 
-#### Upper Bound:
 We want to show that $f(n) \leq c_2 \cdot n$ for some constant $c_2$. From $f(n) = 2n + 2$, we get:
 $$
 2n + 2 \leq c_2 \cdot n
@@ -339,8 +334,63 @@ When the for loop has ended and with the last comparison which is false this if 
 Total: $2\cdot \log_2(n)+2$
 
 
+## 4. 
+Show that the number of comparisons needed for binary search is $Θ(log2 (n))$.
+
+#proof
+Let $f(n)$ represent the total number of comparisons made by binary search. From our previous discussion, we know that binary search makes two comparisons per iteration in the main loop, and two final comparisons after the loop finishes. Therefore, the total number of comparisons is:
+
+$$
+f(n) = 2 \cdot \log_2(n) + 2
+$$
+
+Where $\log_2(n)$ is the number of iterations of the binary search loop.
 
 
+We need to find constants $c_1$, $c_2$, and $n_0$ such that:
+
+$$
+c_1 \cdot \log_2(n) \leq f(n) \leq c_2 \cdot \log_2(n) \quad \text{for all} \quad n \geq n_0
+$$
+
+This will prove that the function $f(n) = 2 \cdot \log_2(n) + 2$ is in $\Theta(\log_2(n))$.
+
+We want to find $c_2$ such that:
+
+$$
+2 \cdot \log_2(n) + 2 \leq c_2 \cdot \log_2(n) \quad \text{for large} \ n
+$$
+
+For large $n$, the constant $+2$ becomes insignificant compared to the $2 \cdot \log_2(n)$ term. So, we can choose $c_2 = 3$, because:
+
+$$
+2 \cdot \log_2(n) + 2 \leq 3 \cdot \log_2(n) \quad \text{for n>4} 
+$$
+
+This gives the upper bound.
+Now we want to find $c_1$ such that:
+
+$$
+2 \cdot \log_2(n) + 2 \geq c_1 \cdot \log_2(n) \quad \text{for large} \ n
+$$
+
+Again, for large $n$, the $+2$ term becomes insignificant, and we can choose $c_1 = 2$, because:
+
+$$
+2 \cdot \log_2(n) + 2 \geq 2 \cdot \log_2(n) \quad \text{for all} \ n \geq 1
+$$
+
+This gives the lower bound.
+We can now choose $n_0$ to be any positive integer, say $n_0 = 4$, since the bounds hold for all $n \geq 4$.
+
+
+We have found constants $c_1 = 2$, $c_2 = 3$, and $n_0 = 4$ such that for all $n \geq n_0$:
+
+$$
+2 \cdot \log_2(n) \leq 2 \cdot \log_2(n) + 2 \leq 3 \cdot \log_2(n)
+$$
+
+Thus, we have shown that the number of comparisons in binary search is $\Theta(\log_2(n))$ with witnesses. Therefore, the number of comparisons grows logarithmically with the size of the input list, and we have proven the result using the formal definition of $\Theta$-notation with appropriate constants.
 
 
 
