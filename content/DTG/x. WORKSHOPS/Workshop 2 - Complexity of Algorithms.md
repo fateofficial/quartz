@@ -254,9 +254,9 @@ Consider the binary search algorithm and assume that the list has length n = 2k 
 Check that every full iteration of the while loop uses two comparisons.
 
 In the while statement two comparisons are used.
-i < j 
+$i < j$
 For checking if search is finished,
-x > a_m 
+$x > a_m$
 Checks which side to discard, lower or higher values.
 
 ### ii)
@@ -311,7 +311,7 @@ $$\log_2(n) = k$$ Thus, the number of halvings required to reduce the list of si
 
 v)
 Show that the number of comparisons needed for binary search is $\Theta(\log_2(n))$
-Main loop contains two comparisons and runs $\log_2(n)$ times as stated above.
+
 
 while $i < j$:  
     $m := \lfloor \frac{i + j}{2} \rfloor$  
@@ -319,9 +319,7 @@ while $i < j$:
         **then** $i := m + 1$  
     **else** $j := m$  
 
-As stated above these for loops runs with two comparisons every time which is 2n.
-The loop run however again for the last check where it is false so that is +1 comparison.
-Total: $2\cdot \log_2(n)+1$
+Main loop contains two comparisons one in the while loop, and one in the if statement because it iterate log2(n) times, it does however fail after.
 
 
 **if** $x = a_i$:  
