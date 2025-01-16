@@ -453,3 +453,5 @@ divide with 9986,712
 $m  = \frac{132800}{9986,712}$
 
 $m\approx 13.3$
+
+Therefore when around 13.3 searches are needed with list size of 10000 then it is better to use binary search.
