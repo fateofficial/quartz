@@ -9,6 +9,7 @@ The term **asymptotic** refers to the behavior of a function as its input approa
 | Big O    | Upper bound (asymptotic upper limit)               | Function grows at most as fast as g(n)g(n)g(n), but it may grow at the same rate. |
 | Small o  | Strict upper bound (asymptotic strict upper limit) | Function grows strictly slower than g(n)g(n)g(n); the ratio approaches zero.      |
 
+
 | Notation  | Bound Type            | Definition                                     | Example                | Interpretation                          |
 | --------- | --------------------- | ---------------------------------------------- | ---------------------- | --------------------------------------- |
 | Big-O     | Upper bound           | $f(n) \leq c \cdot g(n)$ for large $n$         | $3n + 2 \in O(n)$      | $f(n)$ grows no faster than $g(n)$      |
@@ -310,7 +311,9 @@ $$\log_2(n) = k$$ Thus, the number of halvings required to reduce the list of si
  This shows that it takes exactly $\log_2(n)$ halvings to reduce the list to one element, where $n$ is a power of 2. If $n$ is not a power of 2, the number of halvings will be approximately $\log_2(n)$, but there will be some rounding or fractional values since $\log_2(n)$ may not be an integer.
 
 v)
-Show that the number of comparisons needed for binary search is $\Theta(\log_2(n))$
+Consider the final steps of the algorithm. Once $i = j$, the while loop checks its run condition once more. Then the algorithm continues to check if we have found the element in question. 
+Show that the algorithm will need $2 \log_2(n) + 2$ comparisons.
+
 
 
 while $i < j$:  
@@ -327,7 +330,9 @@ Main loop contains two comparisons one in the while loop, and one in the if stat
 
 When the for loop has ended and with the last comparison which is false this if statement is checked to see if element divided to is the element searched for, which is +1 comparisons.
 
-Total: $2\cdot \log_2(n)+2$
+The worst case of these iterations and amount of comparisons can be found  when taking the celing or floor of log2(n).
+
+Total: $2\cdot \log_2(n)+2$ The amount of comparisons in the binary search implemented.
 
 
 ## 4. 
@@ -388,6 +393,63 @@ $$
 
 Thus, we have shown that the number of comparisons in binary search is $\Theta(\log_2(n))$ with witnesses. Therefore, the number of comparisons grows logarithmically with the size of the input list, and we have proven the result using the formal definition of $\Theta$-notation with appropriate constants.
 
+## 5. 
+Compare these theoretical results with the results you got from your implementation.
+
+list size of 64, following graphs will be offset of 14 to see difference.
+
+![[64.png]]
+
+list size of 78
+![[78.png]]
+
+list size of 50
+![[50.png]]
+
+Where x is just listsize/2
+
+![[comparison.png]]
+
+## 6.
+Assume we have a list of 10,000 elements and need to search for several elements in it. We want to figure out when it pays off to sort the list before searching. Use the $\Theta$ approximations for the following exercises when calculating the number of comparisons made, i.e., assume linear search uses $n$ comparisons and binary search uses $\log_2(n)$ comparisons.
+
+i)
+How many comparisons will be used when we search for m elements using linear search?
+Linear search is $\Theta(n)$, which is done m times.
+The amount of comparisons will be $m\cdot n$ where m is the amount of searches and n is list size which is 10000. 
+
+$10000\cdot m$
+
+ ii) 
+We will see that a list of $n$ elements can be sorted with an effort of $\Theta(n \log_2(n))$. How many operations are needed if we sort the list first, then search for $m$ elements using binary search?
+
+In the case of using binary search and an effiecient sorting algorithm, the soring runs in $\Theta(n \log_2(n))$ only once, however binary search is done m times.
+
+$n \log_2(n)+m\cdot \log_2(n)$
+
+replace n with list size.
+
+$10000\cdot \log_2(10000)+m\cdot \log_2(10000)$
+
+$log_2(10000)\approx 13,2877123795$
+replace
+
+Total comparisons are, where m is the amount of searches.
+$10000\cdot 13,288 + m\cdot 13,288$
 
 
+iii) At which point, i.e., for which m, do these two approaches have similar complexity? Which one is better when?
 
+This can be done by setting the two comparison formulas equal to eachother and finding when they are equal.
+
+$m \cdot 10000 = 132800 + m \cdot 13,288$
+
+-13.288m both sides
+
+$m \cdot 9986,712 = 132800$
+
+divide with 9986,712
+
+$m  = \frac{132800}{9986,712}$
+
+$m\approx 13.3$
