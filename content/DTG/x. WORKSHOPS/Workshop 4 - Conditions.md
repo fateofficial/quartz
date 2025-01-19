@@ -187,7 +187,7 @@ Replace in the full version, now we have:
 
 $(P(x) \land \neg R(x)) \lor (\neg P(x) \land Q(x) \land \neg R(x)) \lor (\neg P(x) \land \neg Q(x) \land R(x))$
 
-Howver to make it PDNF a term is missing from the first minterm which is Q(x), this can be added because
+However to make it PDNF a term is missing from the first minterm which is Q(x), this can be added of taking into consideration both options of Q(x).
 
 $(P(x) \land \neg R(x)) = (P(x) \land \neg R(x) \land Q(x)) \lor (P(x) \land \neg R(x) \land \neg Q(x))$
 
@@ -219,11 +219,9 @@ Since the contrapositive is true, the original statement is also true. Therefore
 Prove the following theorem: Let x be a positive integer. It holds that $9 x − 2 ~mod~ 5 = 2$ is equivalent to $x$ being odd.
 
 Theorem:
-Let $x$ be a positive integer. The statement
-
-$$
-x - 2 \mod 5 = 2
-$$
+Let $x$ be a positive integer. 
+The statement:
+$x - 2 \mod 5 = 2$
 
 is **not equivalent** to $x$ being odd.
 
