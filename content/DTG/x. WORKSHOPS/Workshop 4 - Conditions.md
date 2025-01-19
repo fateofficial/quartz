@@ -248,9 +248,13 @@ $9^x - 2 \equiv 2 \pmod{5}$ is satisfied if and only if $x$ is odd.
 Therefore the theorem is true.
 
 
+## 3)
+Explain why the previous theorems show that $Q(x)$ and $R(x)$ are the same function. Hence we can replace $R(x)$ with $Q(x)$ in (1) and show that it is equivalent to $$(P(x) \land \neg Q(x)) \lor \neg (P(x) \lor \neg Q(x) \lor Q(x)) \lor (\neg P(x) \land \neg Q(x) \land Q(x))$$ $$\equiv (P(x) \land \neg Q(x)) \lor \neg (P(x) \lor T) \lor (\neg P(x) \land F)$$ $$\equiv P(x) \land \neg Q(x)$$
+The theorems show that $Q(x)$ and $R(x)$ are the same because 
 
-
-
+$$9^x - 2 \equiv 2 \pmod{5} \iff \text{ x is odd.}$$
+$$\gcd(x, 2) = 1 \iff x \text{ is odd.}$$
+That means they are both true for the same x value, or if it is odd. They are logically equivalent.
 
 
 
