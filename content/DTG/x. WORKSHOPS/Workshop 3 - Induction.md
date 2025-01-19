@@ -26,6 +26,9 @@ Procedure Mergesort(L = ($a_0, a_1, ..., a_{n−1}$), l, r)
     return L
 
 
+---
+---
+
 ## Exercise 1
 1)
 Implement Merge and Mergesort.
@@ -94,41 +97,51 @@ Original array: 5 3 8 1 6 10 7 2 4 9
 Sorted array: 1 2 3 4 5 6 7 8 9 10
 ```
 
+---
+
 ## Exercise 2
 
 Proof by using induction, that Mergesort returns the sorted list containing the same elements as the input list L. In the proof you may assume, that Merge returns returns a sorted list containing the elements of two sorted lists given as inputs.
 
-#### Base Case:
-When the input list has only one element, where $l = r$, the algorithm terminates without further recursion. A list of one element is trivially sorted, and the list returned is the same as the input list. Therefore, the base case holds.
+#Proof
+### Base Case:
+Let $P(n)$ be the statement that for any list $L$ of size $n$, mergeSort correctly returns a sorted list containing the same elements as the input list $L$.
 
-#### Inductive Hypothesis:
-Assume that for any list $L$ of size $k$, the function mergeSort correctly returns a sorted list containing the same elements as the input list $L$. More formally, for any list $L$ with $|L| = k$, mergeSort(L) will:
-1. Return a sorted list.
-2. Contain the same elements as the input list $L$.
+When the input list has only one element, where $l = r$, the algorithm terminates without further recursion. A list of one element is trivially sorted, and the list returned is the same as the input list. Therefore, $P(1)$ holds.
 
-#### Inductive Step:
-We need to show that mergeSort also works for lists of size $k + 1$.
+### Inductive Hypothesis:
+Assume that $P(k)$ is true. That is, for any list $L$ of size $k$, mergeSort correctly returns a sorted list containing the same elements as the input list $L$:
+	mergeSort(L) returns a sorted list.
+	The returned list contains the same elements as the input list $L$.
 
-Consider a list $L$ of size $k + 1$.  mergeSort  divides the list into two smaller sublists:
+### Inductive Step:
+We need to prove that $P(k + 1)$ is true. That is, for a list $L$ of size $k + 1$, mergeSort returns a sorted list containing the same elements as $L$.
+
+#### Step 1: Divide the List
+The algorithm divides the list $L$ into two smaller sublists:
 	The left sublist $L_1$ contains elements from index $l$ to $m$, where $m = \left\lfloor \frac{l + r}{2} \right\rfloor$.
 	The right sublist $L_2$ contains elements from index $m + 1$ to $r$.
 
-By the inductive hypothesis, both the left sublist $L_1$ and the right sublist $L_2$, each having size less than or equal to $k$, are sorted correctly and contain the same elements as the original sublists. In other words:
-	mergeSort(L_1) returns a sorted list containing the same elements as $L_1$,
-	mergeSort(L_2) returns a sorted list containing the same elements as $L_2$.
+#### Step 2: Apply the Inductive Hypothesis
+By the inductive hypothesis:
+	mergeSort(L$_1$) returns a sorted list containing the same elements as $L_1$.
+	mergeSort(L$_2$) returns a sorted list containing the same elements as $L_2$.
 
-The merge function is then used to combine these two sorted sublists into a single sorted list. Since we assume that merge correctly merges two sorted lists into a sorted list containing all the elements of the two sublists, the merged list $L'$ will:
-	Be sorted (since merge produces a sorted result),
-	Contain all the elements from $L_1$ and $L_2$, which together form the original list $L$.
+#### Step 3: Merge the Sublists
+The merge function combines the two sorted sublists $L_1$ and $L_2$ into a single sorted list $L'$. Since merge is assumed to correctly combine two sorted lists into one sorted list:
+	$L'$ is sorted.
+	$L'$ contains all the elements of $L_1$ and $L_2$, which together form the original list $L$.
 
-Therefore, the result of mergeSort(L) is a sorted list containing the same elements as the input list $L$.
+By induction, $P(n)$ is true for all $n \geq 1$. That is, mergeSort correctly returns a sorted list containing the same elements as the input list for any list size $n$.
 
+
+---
 
 
 ## Exercise 3
 In [Ros] it is shown that the merging of two sorted lists of lengths a and b can be accomplished by using at most $a + b − 1$ comparisons (Lemma 1, section 5.4.4.).
 
-i)
+### i)
 Assume that Merge uses (exactly) $a + b - 1$ comparisons to combine two lists with $a$ and $b$ elements. Furthermore, assume that the length of the input list $L$ is $n = 2^k$. 
 Prove by using induction on $k$, that Mergesort uses
 $$
@@ -202,9 +215,121 @@ By the principle of mathematical induction, we have shown that $P(k)$ holds for 
 $$
 n(\log_2(n) + 1) = 2^k(k + 1)
 $$
-comparisons to sort a list of size $n = 2^k$.
+comparisons to sort a list of size $n = 2^k$ using regular induction.
 
 
+---
+
+### ii)
+Use induction to show that Mergesort uses less or equal to $2n \log_2(n)$  comparisons for all $n \geq 2$ using the same assumptions regarding the Merge procedure as before.
+
+**Hints:**  
+A list with $n + 1$ elements is divided into two lists with 
+$\left\lceil \frac{n+1}{2} \right\rceil$ and $\left\lfloor \frac{n+1}{2} \right\rfloor$ 
+elements respectively by Mergesort. Furthermore, the following inequalities might be useful:
+
+$2 \left\lfloor \frac{n+1}{2} \right\rfloor \log_2 \left( \left\lfloor \frac{n+1}{2} \right\rfloor \right) \leq 2 \left\lfloor \frac{n+1}{2} \right\rfloor \log_2 \left( \left\lceil \frac{n+1}{2} \right\rceil \right)$
+$\left\lfloor \frac{n+1}{2} \right\rfloor + \left\lceil \frac{n+1}{2} \right\rceil = n + 1$
+$\left\lceil \frac{n+1}{2} \right\rceil \leq \frac{2}{3}(n + 1)$ for $n$ a positive integer
+$\log_2 \left( \frac{2}{3}(n + 1) \right) = \log_2(n + 1) - \log_2 \left( \frac{3}{2} \right)$
+$n + 1 - 2(n + 1) \log_2 \left( \frac{3}{2} \right) < 0$ for positive $n$.
+
+
+
+#proof 
+
+Let $P(n)$ be the statement: "MergeSort uses at most $2n \log_2(n)$ comparisons for all $n \geq 2$," where $n = 2^k$ for some integer $k$.
+
+### Assumptions:
+1. Merge uses exactly $a + b - 1$ comparisons to combine two lists of size $a$ and $b$, respectively.
+2. The length of the input list $L$ is $n = 2^k$, ensuring $n$ is always a power of 2.
+
+
+### Base Case:
+For $n = 2^1 = 2$:
+- MergeSort divides the list into two sublists of size $1$, which are already sorted.
+- Merge combines the two sublists with exactly $1 + 1 - 1 = 1$ comparison.
+- The total number of comparisons is $1$, which satisfies:
+  $$
+  1 \leq 2(2)\log_2(2) = 4.
+$$
+Thus, $P(2)$ holds.
+
+### Strong Inductive Hypothesis:
+Assume $P(2), P(4), \dots, P(k)$ are all true for some $k \geq 2$. That is, for any list of size $n = 2^m$, where $1 \leq m \leq k$, MergeSort uses at most $2n \log_2(n)$ comparisons.
+
+
+### Inductive Step:
+We need to prove $P(k+1)$: MergeSort uses at most $2n \log_2(n)$ comparisons for $n = 2^{k+1}$.
+
+#### Step 1: Divide the List
+For $n = 2^{k+1}$, MergeSort divides the list into two sublists of size $n/2 = 2^k$. Each sublist is sorted recursively using MergeSort.
+
+#### Step 2: Apply the Strong Inductive Hypothesis
+By the strong inductive hypothesis, sorting each sublist of size $2^k$ requires at most:
+$$
+T(2^k) \leq 2(2^k)\log_2(2^k) = 2(2^k)k.
+$$
+Since there are two sublists, the total comparisons for sorting both is:
+$$
+2 \cdot T(2^k) \leq 2 \cdot 2(2^k)k = 4(2^k)k.
+$$
+
+#### Step 3: Merge Step
+Merge combines the two sorted sublists of size $2^k$ each, requiring exactly:
+$$
+(2^k) + (2^k) - 1 = 2^{k+1} - 1 \text{ comparisons.}
+$$
+
+#### Step 4: Total Comparisons
+The total number of comparisons for $n = 2^{k+1}$ is:
+$$
+T(2^{k+1}) = 2 \cdot T(2^k) + (2^{k+1} - 1).
+$$
+Substituting $T(2^k) \leq 4(2^k)k$:
+$$
+T(2^{k+1}) \leq 2 \cdot 4(2^k)k + (2^{k+1} - 1).
+$$
+Simplify:
+$$
+T(2^{k+1}) \leq 8(2^k)k + (2^{k+1} - 1).
+$$
+Factor out $2^{k+1}$:
+$$
+T(2^{k+1}) \leq (2^{k+1})(4k + 1) - 1.
+$$
+
+#### Step 5: Verify the Inequality
+We need to show that:
+$$
+T(2^{k+1}) \leq 2(2^{k+1})\log_2(2^{k+1}).
+$$
+Since $\log_2(2^{k+1}) = k+1$, the right-hand side becomes:
+$$
+2(2^{k+1})(k+1).
+$$
+
+Compare:
+$$
+(2^{k+1})(4k + 1) - 1 \leq 2(2^{k+1})(k+1).
+$$
+Simplify:
+$$
+4k + 1 \leq 2(k+1).
+$$
+Distribute:
+$$
+4k + 1 \leq 2k + 2.
+$$
+Simplify further:
+$$
+2k \leq 1,
+$$
+which holds for all $k \geq 1$.
+
+Thus, $T(2^{k+1}) \leq 2(2^{k+1})\log_2(2^{k+1})$, and $P(k+1)$ holds.
+
+By strong induction, $P(n)$ is true for all $n = 2^k$, where $k \geq 1$. MergeSort uses at most $2n \log_2(n)$ comparisons for all $n \geq 2$.
 
 
 
