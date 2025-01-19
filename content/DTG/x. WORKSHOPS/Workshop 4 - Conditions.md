@@ -215,6 +215,36 @@ Proof:
 Since the contrapositive is true, the original statement is also true. Therefore, we have proven that: $$\gcd(x, 2) = 1 \iff x \text{ is odd.}$$
 
 
+## 2)
+Prove the following theorem: Let x be a positive integer. It holds that $9 x − 2 ~mod~ 5 = 2$ is equivalent to $x$ being odd.
+
+Theorem:
+Let $x$ be a positive integer. The statement
+
+$$
+x - 2 \mod 5 = 2
+$$
+
+is **not equivalent** to $x$ being odd.
+
+#Proof
+
+$x - 2 \mod 5 = 2$:
+This means when $x - 2$ is divided by 5, the remainder is 2. So, we can write:
+   
+   $$x - 2 = 5k + 2 \quad \text{for some integer} \ k.$$
+
+   Adding 2 to both sides gives:
+
+   $$x = 5k + 4.$$
+
+   We have $x = 5k + 4$, which is always **even** because adding 4 (an even number) to any multiple of 5 results in an even number.
+
+   Since $x$ is always even, the condition $x - 2 \mod 5 = 2$ does not imply that $x$ is odd. Therefore, the statement is false and not equivalent to $x$ being odd.
+
+
+
+
 
 
 
