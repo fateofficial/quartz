@@ -257,10 +257,30 @@ $$\gcd(x, 2) = 1 \iff x \text{ is odd.}$$
 That means they are both true for the same x value, or if it is odd. They are logically equivalent.
 
 
+$$(P(x) \land \neg R(x)) \lor \neg (P(x) \lor \neg Q(x) \lor R(x)) \lor (\neg P(x) \land \neg Q(x) \land R(x))$$
+Now that $Q(x)$ and $R(x)$ are proven to logically equivalent it can be replaced in the formula. 
+ Replace $Q(x)$ with $R(x)$
+ 
+$$(P(x) \land \neg R(x)) \lor \neg (P(x) \lor \neg R(x) \lor R(x)) \lor (\neg P(x) \land \neg R(x) \land R(x))$$
 
+Remove negation from second term using de morgans
 
+$$(P(x) \land \neg R(x)) \lor (\neg P(x) \land R(x) \land \neg R(x)) \lor (\neg P(x) \land \neg R(x) \land R(x))$$
 
+R(x) and R(x) is a contradiction therefore it can be replaced with F
 
+$$(P(x) \land \neg R(x)) \lor (\neg P(x) \land F) \lor (\neg P(x) \land F)$$
+Since any minterm with false in it is a contradiction the minterms can be discarded.
+
+$$P(x) \land \neg R(x)$$
+Replace R(x) with Q(x)
+
+$$(P(x) \land \neg Q(x) \equiv P(x) \land \neg Q(x)$$
+
+Thus it shown that it is logically equivalent.
+
+## 3) 
+Check if (2) is in CNF, DNF, PCNF and PDNF.
 
 
 
