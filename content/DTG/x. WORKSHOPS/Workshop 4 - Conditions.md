@@ -216,29 +216,54 @@ Since the contrapositive is true, the original statement is also true. Therefore
 
 
 ## 2)
-Prove the following theorem: Let x be a positive integer. It holds that $9 x − 2 ~mod~ 5 = 2$ is equivalent to $x$ being odd.
+Prove the following theorem: Let x be a positive integer. It holds that $9^x − 2 ~mod~ 5 = 2$ is equivalent to $x$ being odd.
 
 Theorem:
-Let $x$ be a positive integer. 
-The statement:
-$x - 2 \mod 5 = 2$
-
-is **not equivalent** to $x$ being odd.
+Let $x$ be a positive integer.  
+$9^x - 2 \mod 5 \equiv 2$ is equivalent to $x$ being odd.
 
 #Proof
 
-$x - 2 \mod 5 = 2$:
-This means when $x - 2$ is divided by 5, the remainder is 2. So, we can write:
-   
-   $$x - 2 = 5k + 2 \quad \text{for some integer} \ k.$$
+Because mod 5 is just a function it can be discarded.
+$9^x - 2 \equiv 2$
 
-   Adding 2 to both sides gives:
+Add 2 to both sides
+$9^x  \equiv 4$
 
-   $$x = 5k + 4.$$
+Because of the nature of orders of units in modular arithmetic $9^x \mod 5$  has a cyclic behaviour. This means that the same last digit is seen multiple times when varying x.
 
-   We have $x = 5k + 4$, which is always **even** because adding 4 (an even number) to any multiple of 5 results in an even number.
+$9^1 \mod 5 \equiv 4$
+$9^2 \mod 5 \equiv 1$
+$9^3 \mod 5 \equiv 4$
+$9^4 \mod 5 \equiv 1$
 
-   Since $x$ is always even, the condition $x - 2 \mod 5 = 2$ does not imply that $x$ is odd. Therefore, the statement is false and not equivalent to $x$ being odd.
+Here it is seen that it cycles between 4 and 1.
+
+This means that when x is:
+even it returns 1.
+odd it returns 4.
+
+The equation:
+$9^x - 2 \equiv 2 \pmod{5}$ is satisfied if and only if $x$ is odd.
+Therefore the theorem is true.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
