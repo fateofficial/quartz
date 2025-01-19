@@ -196,33 +196,23 @@ That means the PDNF is $(P(x) \land \neg R(x) \land Q(x)) \lor (P(x) \land \neg 
 How many minterms does the normalform contain? What does this mean for the corresponding truth table? 
 Each  minterm represents a unique combination of the variables that results in a true (1 output.
 
-The number of minterms in the normal form corresponds to the **number of rows** in the truth table where the output is 1.
+Each variable adds $2^x$ different boolean values so $2*2*2=8$ so 4 our of 8 values that correspond to cases where the output is 1. This means that the Boolean function has 4 minterms in its disjunctive normal form (PDNF), as each minterm represents a specific combination of inputs that make the function true.
 
 # Exercise 3
 
 ## 1)
 Prove the following theorem: Let $x$ be a positive integer. It holds that $gcd(x, 2) = 1$ if and only if x is odd.
 
-Let $x$ be a positive integer. Then, $\gcd(x, 2) = 1$ if and only if $x$ is odd.
+Theorem: 
+Let $x$ be a positive integer. It holds that: $$\gcd(x, 2) = 1 \iff x \text{ is odd.}$$We will prove this theorem by contraposition. Let: $p$ be the statement $\gcd(x, 2) = 1$, - $q$ be the statement $x$ is odd. The original implication is: $$p \rightarrow q.$$ The contrapositive is: $$\neg q \rightarrow \neg p,$$ where: $\neg q$ means $x$ is even, and 
+$\neg p$ means $\gcd(x, 2) \neq 1$. 
+We now proceed to prove the contrapositive. 
+Proof: 
+1. Assume $x$ is even. By definition, an even number can be written as: $$x = 2k, \quad \text{where } k \text{ is a positive integer.}$$
+2. Compute $\gcd(x, 2)$: Since $x = 2k$, $x$ is divisible by 2. Therefore, we have: $$\gcd(x, 2) = 2.$$
+3. Since $\gcd(x, 2) = 2$, it follows that $\gcd(x, 2) \neq 1$. 
 
-#proof
-If $\gcd(x, 2) = 1$, then $x$ is odd.
-
-Assume that $\gcd(x, 2) = 1$. By the definition of the greatest common divisor, this means that $x$ and $2$ have no common divisors other than $1$. In particular, this implies that $x$ cannot be divisible by $2$, as any number divisible by $2$ would have $2$ as a common divisor with $2$. Which means, $x$ is not divisible by 2 which means that $x$ is **odd**.
-
-Thus, if $\gcd(x, 2) = 1$, it follows that $x$ is odd.
-
-#### 2. If $x$ is odd, then $\gcd(x, 2) = 1$.
-
-Now, assume that $x$ is odd. By definition, an odd number is one that is **not divisible by 2**. Since $x$ is not divisible by $2$, the only common divisor between $x$ and $2$ must be $1$ (because the only divisors of $2$ are $1$ and $2$, and $x$ is not divisible by $2$).
-
-Therefore, $\gcd(x, 2) = 1$.
-
-We have shown both directions of the statement:
-- If $\gcd(x, 2) = 1$, then $x$ is odd.
-- If $x$ is odd, then $\gcd(x, 2) = 1$.
-
-Thus, by the definition of the gcd and the properties of odd numbers, we conclude that $\gcd(x, 2) = 1$ if and only if $x$ is odd.
+Since the contrapositive is true, the original statement is also true. Therefore, we have proven that: $$\gcd(x, 2) = 1 \iff x \text{ is odd.}$$
 
 
 
