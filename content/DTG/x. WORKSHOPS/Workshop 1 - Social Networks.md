@@ -57,7 +57,8 @@ For option b) this means that if $x_1 \leq x_2$, $x_2 \leq x_3$, $\dots$, $x_{n-
 Explain the two options in terms of relations. The second option is related to a closure operation, which one?
 ___
 ## 1.
-Option a)**, each person can see the posts of their **direct followers**, but also the posts of those whom their followers are connected to (so long as they follow them directly). This can be thought of as **the relation RRR allowing visibility through one step of propagation**. Essentially, the relation defines **immediate connections**, but allows you to trace a path through a follower to see their posts.
+Option a)
+each person can see the posts of their **direct followers**, but also the posts of those whom their followers are connected to (so long as they follow them directly). This can be thought of as **the relation RRR allowing visibility through one step of propagation**. Essentially, the relation defines **immediate connections**, but allows you to trace a path through a follower to see their posts.
 In terms of relations, we can define this as a **direct relation** between the nodes (users) in the graph, where each directed edge represents a "following" relationship (i.e., one node follows another, and thus can see their posts).
 This means if u take the composite of the relation on the relation $R \circ R$  that u will see who is indirectly followed just by association.
 

@@ -1,46 +1,37 @@
-Show that if n is a positive integer, then
+In this workshop we will study the MergeSort sorting algorithm. A pseudocode for MergeSort is presented as figure 1 and can also be looked up in \[Ros\], section 5.4.4. Mergesort uses a subroutine Merge, that is presented in figure 2. Note that the algorithms are described here a little different than in \[Ros\], but the underlying idea is the same. To sort a list L = (a0, a1, . . . , an−1) with the program given in the pseudocode one would call the procedure Mergesort(L, 0, n − 1). Before you start it might be useful to reacquaint yourself with section 5.4.4. 
+# Exercise 1 
+1. Implement Merge and Mergesort. 2. Use Mergesort to sort the list L = (5, 3, 8, 1, 6, 10, 7, 2, 4, 9) * L = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10) (WOW!) 
+```C void merge_sort(int l[], const int start, const int end){ if (start < end) { const int mid = (start + end) >> 1; // div 2 floor merge_sort(l, start, mid); merge_sort(l, mid + 1, end); merge(l, start, mid, end); } } void merge(int l[], const int start, const int mid, const int end){ const int left_size = mid - start + 1; const int right_size = end - mid; int l1[left_size], l2[right_size]; for (int i = 0; i < left_size; i++) { l1[i] = l[i + start]; } for (int j = 0; j < right_size; j++) { l2[j] = l[j + mid + 1]; } int i = 0, j = 0; while (i < left_size && j < right_size) { if (l1[i] <= l2[j]) { l[start + i + j] = l1[i]; i++; } else { l[start + i + j] = l2[j]; j++; } } if (i == left_size) { for (int k = j; k <= end - mid - 1; k++) { l[start + i + k] = l2[k]; } } else { for (int k = i; k <= mid - start; k++) { l[start + j + k] = l1[k]; } } } ``` 
+# Exercise 2 
+1. Prove by using induction, that Mergesort returns the sorted list containing the same elements as the input list L. In the proof you may assume, that Merge returns a sorted list containing the elements of two sorted lists given as inputs. 
+**Base step:** 
+Prove that Mergesort returns a sorted list, from a list of $1$ element **Inductive hypothesis:** Either strong or regular induction. 
+**Inductive step:** 
+Show that $[P(1)\wedge P(2)\wedge\dots\wedge P(k)]\to P(k+1)$ is true for all positive integers $k$. --- 
+**Basis**: P(2) is that Mergesort correctly returns a sorted list with 2 elements in it: 
+Mergesort divides the list into two parts: One from l (here 0) to m (here 0), and one from m+1 (here 1) to r (here 1). 
 
-$1+2 + ⋯ + n = \frac{n(n + 1)}{2}$
+The two lists each have one element each, and are as such trivially sorted. 
 
-Base case:
-Must show that $P(n)=1+2 + ⋯ + n = \frac{n(n + 1)}{2}$
+Assuming Merge correctly sorts the two lists into one, the list will be sorted correctly and P(2) has been proven. 
+I
+Inductive hypothesis: 
+Assume P(k) (that Mergesort can sort a list of $k$ entries) and for all values of x less than k. 
 
-$P(1)=1=\frac{1(1 + 1)}{2}$
+Inductive step: 
+Show that it holds for $P(k+1)$ entries. 
+When Mergesort calls a list of $k+1$ elements, the list will still be "split" continually until only "lists" of one element remains (creating a tree, effectively). 
 
-$P(1)=1=\frac{2}{2}$
+The branches of this tree are then sorted using the Merge function. This will always work regardless of the number of entries, as Mergesort recursively splits every element into its own list, and then correctly sorts them. more math-y: lists of k+1 are divided into lists of length k/2 and k/2+1. k/2 works (as is assumed from IH), and k/2+1 works, because eventually the +1 will be inserted into a list of its own, which will then be sorted by Merge function. 
 
-$P(1)=1=1$ its true
+Alternatively, using strong induction, the list of $k+1$ elements is split into lists of length $\left\lfloor \frac{k+1}{2} \right\rfloor$ and $\left\lceil \frac{k+1}{2} \right\rceil$. Both of these lists are smaller than k elements, and as such, they are assumed to be sorted correctly after run. Then also assuming that Merge works, the two sorted lists will again be sorted correctly. QED 
 
-INDUCTIVE STEP: For the inductive hypothesis we assume that P(k) holds for an arbitrary positive integer k. 
+**Note**: It makes much more sense to use strong induction, as Mergesort always sorts lists of less than k correctly if k is also sorted correctly. This is because Mergesort splits lists into strictly smaller lists, that are then sorted correctly. It is implicitly implied through the way that Mergesort functions, that all lists of less than k are also sorted correctly by the Mergesort 
+# Exercise 3 
+In \[Ros\] it is shown that the merging of two sorted lists of lengths $a$ and $b$ can be accomplished by using at most $a + b - 1$ comparisons (Lemma 1, section 5.4.4.). 
+1. Assume that Merge uses (exactly) $a + b - 1$ comparisons to combine two lists with $a$ and $b$ elements. Furthermore, assume that the length of the input list $L$ is $n = 2^{k}$ . Prove by using induction on $k$, that Mergesort uses$$n(\log_{2}(n)+1)=2^{k}(k+1)$$comparisons to sort $L$. What type of induction did you use? 
+2. 
+3. **Basis step**: P(0) is that if $k=0$ then the formula works. If $k=0$, then $n=2^{0}=1$. Using the formulas: $1(\log_{2}(1)+1)=1$ $2^{0}(0+1)=1$ 1 is equal to 1, so P(0) holds. **Induction hypothesis**: Assume P(k). This means to assume that Mergesort uses as many comparisons as is described by the formula for lists with k elements. In effect, that the following equation holds true.$$2^{k}(\log_{2}(2^{k})+1)=2^{k}(k+1)$$ **Inductive step**: We need to prove $P(k+1)$, meaning that the number of comparisons it takes to sort a list of size $2^{k+1}$ is $2^{k+1}((k+1)+1)$ or just $2^{k+1}(k+2)$. As $P(k)$ is assumed, then it is also assumed that it takes $2^{k}(k+1)$ operations to sort the list. When adding one to k, you are doubling the number of elements, and as such for a list of size $2^{k+1}$ elements, it will logically take $2^{k}(k+1)$ operations to sort both the left list and the right list. This equates to $2\cdot (2^{k}(k+1))$ operations. Then the only missing part is the final merge operation. When Mergesort splits the list into two, each sub list will have $2^{k}$ elements, since $\frac{2^{k+1}}{2}=2^{k}$. This is inserted into the formula for Merge to calculate the number of comparisons needed to sort the two lists. $$a+b-1\implies 2^{k}+2^{k}-1$$ This is added to the previous result: $$2\cdot (2^{k}(k+1))+2^{k}+2^{k}-1$$ Then all that is left is to reduce the expression. $$2\cdot (2^{k}(k+1))+2^{k}+2^{k}-1\implies$$$$2^{k+1}(k+1)+2^{k+1}-1\implies$$$$2^{k+1}((k+1)+1)-1\implies$$$$2^{k+1}(k+2)-1$$ This is not equal to $2^{k+1}(k+2)$, as there is one less comparisons. This final comparison can be found in the if-statement at the top of the Mergesort pseudocode, that checks whether or not the two pointers overlap. When this final comparison is accounted for, the number of comparisons holds. QED 2. 
 
-$P(k)=1+2 + ⋯ + k = \frac{k(k + 1)}{2}$
-
-then we have to show for 
-
-$P(k+1)=1+2 + ⋯ + k + (k+1) = \frac{(k+1)((k+1) + 1)}{2}=\frac{(k+1)(k+2)}{2}$
-
-We can use definition that:
-
-$P(k)=1+2 + ⋯ + k = \frac{k(k + 1)}{2}$
-
-Because of the assumption:
-
-$P(k+1)=\frac{k(k + 1)}{2} + (k+1) =\frac{(k+1)(k+2)}{2}$
-
-Obtain same denominator
-
-$P(k+1)=\frac{k(k + 1)+2(k+1)}{2} =\frac{(k+1)(k+2)}{2}$
-
-# $\frac{k(k + 1)+2(k+1)}{2}$
-
-Factor out k+1
-
- $\frac{(k+1)(k+2)}{2}$
- 
-Put 1 out of parenthesis
-
- $\frac{(k+1)((k+1)+1)}{2}= \frac{(k+1)((k+1)+1)}{2}$
- 
- Proof ended
-
-
+1. Use induction to show that Mergesort uses less or equal to $2n\log_{2}(n)$ comparisons for all n ≥ 2 using the same assumptions regarding the Merge procedure as before. Hints: A list with n + 1 elements is divided into two lists with $\lceil \frac{n+1}{2} \rceil$ and $\lfloor \frac{n+1}{2} \rfloor$ elements respectively by Mergesort. Furthermore the following in-/equalities might be useful: ![[Pasted image 20250117111418.png]] ![[Pasted image 20250117111429.png]] **Basis step**: $P(2)$: Prove that Mergesort uses less than or equal to $2n\log_{2}(n)$ comparisons for $n=2$. Mergesort first has the first comparison. Mergesort then splits the lists into two lists of length one. Merging the lists uses $a+b-1$ comparisons. Here: $1+1-1=1$. The operations take 2 total comparisons. In the formula, inputting 2 in place of $n$ gives:$$2n\log_{2}(n)\implies 2\cdot 2\cdot \log_{2}(2)=2\cdot 2\cdot 1=4.$$This satisfies the inequality, as $1\leq 4$. Note that after this point the total number of comparisons is subbed for the function $T$. **Induction Hypothesis**: $P(k)$: Assume that for values of $k$ such that $2\leq k < n$, the number of comparisons do not exceed $2k\log_{2}(k)$. **Inductive step**: $P(k+1)$: Attempt to prove that for values of $k+1$ the number of comparisons made to sort the list does not exceed $$2\cdot(k+1)\cdot \log_{2}(k+1)$$ --- ~~Mergesort first makes the first comparison in the initial if-statement.~~ Mergesort splits the list of length $k+1$ into two lists of length $\left\lfloor \frac{k+1}{2} \right\rfloor$ and $\left\lceil \frac{k+1}{2} \right\rceil$. Using the hints, calculate the number of comparisons used by `Merge` to combine the two lists: $$\left\lfloor \frac{n+1}{2} \right\rfloor + \left\lceil \frac{n+1}{2} \right\rceil =n+1\implies$$$$\left\lfloor \frac{k+1}{2} \right\rfloor+\left\lceil \frac{k+1}{2} \right\rceil-1=k$$ This means that merge operation takes $k$ comparisons to run. By the inductive hypothesis, the number of comparisons it takes to sort each sub list is$$T\left(\left\lfloor \frac{k+1}{2} \right\rfloor\right)\leq2\cdot \left\lfloor \frac{k+1}{2} \right\rfloor\cdot\log_{2}\left( \left\lfloor \frac{k+1}{2} \right\rfloor \right) $$and$$T\left(\left\lceil \frac{k+1}{2} \right\rceil\right)\leq2\cdot \left\lceil \frac{k+1}{2} \right\rceil\cdot\log_{2}\left( \left\lceil \frac{k+1}{2} \right\rceil \right).$$Using the inductive hypothesis:$$T(n+1)\leq T\left(\left\lfloor \frac{k+1}{2} \right\rfloor\right)+T\left(\left\lceil \frac{k+1}{2} \right\rceil\right)+k$$Inserting the terms:$$T(k+1)\leq 2\cdot \left\lfloor \frac{k+1}{2} \right\rfloor\cdot\log_{2}\left( \left\lfloor \frac{k+1}{2} \right\rfloor \right)+2\cdot \left\lceil \frac{k+1}{2} \right\rceil\cdot\log_{2}\left( \left\lceil \frac{k+1}{2} \right\rceil \right) + k$$ Since $\left\lceil \frac{k+1}{2} \right\rceil \leq \frac{2}{3}(n+1)$ (and by logic same applies for floor), and because $\log_{2}\left( \frac{2}{3}(n+1) \right)=\log_{2}(n+1)-\log_{2}\left( \frac{3}{2} \right)$, I can make the below bounds $$\log_{2}\left( \left\lfloor \frac{k+1}{2} \right\rfloor \right)\leq \log_{2}(k+1)-\log_{2}\left( \frac{3}{2} \right)$$and$$\log_{2}\left( \left\lceil \frac{k+1}{2} \right\rceil \right)\leq \log_{2}(k+1)-\log_{2}\left( \frac{3}{2} \right)$$ Subbing in bounds to equation: First term:$$2\left\lfloor \frac{k+1}{2} \right\rfloor \log_{2}\left(\left\lfloor \frac{k+1}{2} \right\rfloor\right)\leq 2\cdot \frac{2}{3}(k+1)\cdot\left(\log_{2}(k+1)-\log_{2}\left(\frac{3}{2}\right)\right)$$Second term:$$2\left\lceil \frac{k+1}{2} \right\rceil \log_{2}\left(\left\lceil \frac{k+1}{2} \right\rceil\right)\leq 2\cdot \frac{2}{3}(k+1)\cdot\left(\log_{2}(k+1)-\log_{2}\left(\frac{3}{2}\right)\right)$$Combining the terms again:$$T(k+1)\leq 2\cdot \frac{2}{3}(k+1)\cdot\left(\log_{2}(k+1)-\log_{2}\left(\frac{3}{2}\right)\right) + 2\cdot \frac{2}{3}(k+1)\cdot\left(\log_{2}(k+1)-\log_{2}\left(\frac{3}{2}\right)\right) + k$$Simplifying the terms:$$T(k+1)\leq 4\cdot\frac{2}{3}(k+1)\left(\log_{2}(k+1)-\log_{2}\left( \frac{3}{2} \right)\right)+k$$Expanding the terms again (and rearranging):$$T(k+1)\leq \frac{8}{3}(k+1)\log_{2}(k+1)+k-\frac{8}{3}(k+1)\log_{2}\left( \frac{3}{2} \right)$$ Looking at the first and second terms in the equation above, we note that there is an additional k and also $\frac{8}{3}$ is larger than $2$. Because of this, we need to ensure that the last term is negative enough to ensure the inequality. Using the final hint, we can see that $n+1-2(n+1)\log_{2}\left( \frac{3}{2} \right)<0$ for positive $n$. This can be rearranged to $2(n+1)\log_{2}\left( \frac{3}{2} \right)>n+1$.$$2(n+1)\log_{2}\left( \frac{3}{2} \right)>n+1\implies$$Dividing the inequality with 2:$$(n+1)\log_{2}\left( \frac{3}{2} \right)> \frac{1}{2}\cdot(n+1)$$Multiplying by $\frac{8}{3}$:$$\frac{8}{3}(n+1)\log_{2}\left( \frac{3}{2} \right)> \frac{8}{3}\cdot \frac{1}{2}\cdot(n+1)=\frac{8}{6}(n+1)=\frac{4}{3}(n+1).$$This means that $\frac{8}{3}(k+1)\log_{2}\left( \frac{3}{2} \right)$ is strictly larger than $\frac{4}{3}(k+1)$. This is large enough to ensure that the below holds true. Thus$$T(k+1)\leq \frac{8}{3}(k+1)\log_{2}(k+1)+k-\frac{8}{3}(k+1)\log_{2}\left( \frac{3}{2} \right)\leq 2(k+1)\log_{2}(k+1)$$ QED 
+2. What type of induction did you use? What does the result tell us about the complexity of Mergesort in big-$O$ notation? This uses strong induction. This is because of the inherent recursive nature of Mergesort. The result tells us that the complexity of Mergesort falls into the complexity of $O(n\log(n))$

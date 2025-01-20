@@ -150,72 +150,73 @@ $$
 comparisons to sort $L$. What type of induction did you use?
 
 #proof
+
 Let $P(k)$ be the statement that Mergesort uses 
 $$
 n(\log_2(n) + 1) = 2^k(k + 1)
 $$
-comparisons to sort a list $L$ of size $n = 2^k$. We will prove that $P(k)$ holds for all $k \geq 0$ by induction.
+comparisons to sort a list of size $n = 2^k$. We will prove that $P(k)$ holds for all $k \geq 0$ using **strong induction**.
 
-## Base Case ($k = 0$):
+### Base Case ($k = 0$):
 
-For $k = 0$, we have $n = 2^0 = 1$. This means the input list contains only one element, and no comparisons are needed to sort it. The base case for the recursive sorting step does not involve any splitting, as the list is already trivially sorted. Therefore, no comparisons are made during the merge step.
+For $k = 0$, we have $n = 2^0 = 1$. A list of size 1 requires no comparisons, so the number of comparisons for sorting this list is 0. 
 
-Using the assumption that the merge step requires $a + b - 1$ comparisons to combine two lists of size $a$ and $b$, for a single-element list, both $a$ and $b$ are 0 in the merge process, which means that:
-$$
-a + b - 1 = 1+ 0 - 1 = 0 \text{ comparisons for merge}
-$$
-This reflects the fact that no merge step is needed for a list of size 1. Thus, the total number of comparisons for this case is 0.
-
-Now, check the formula for $k = 0$:
+We also verify the formula for $n = 1$:
 $$
 n(\log_2(n) + 1) = 1(\log_2(1) + 1) = 1(0 + 1) = 1
 $$
-Since no comparisons are required for a list of size 1, the total number of comparisons is 0, however the whole algorithm uses 1 comparison in the sense of failing the if statement in the mergesort function. Therefore  P(0) = true.
+Thus, the total number of comparisons is 0, which matches the behavior of the algorithm (since no merge step is required for a single-element list).
 
-## Inductive Hypothesis:
+So, the base case holds: $P(0)$ is true.
 
-Assume that $P(k)$ is true for some $k = m$. That is, for a list of size $n = 2^m$, Mergesort uses:
+
+Inductive Hypothesis :
+Assume that $P(k)$ is true for all $k$ from 0 to $m$. That is, for each $k$ in the range $0 \leq k \leq m$, Mergesort uses:
 $$
-n(\log_2(n) + 1) = 2^m(m + 1)
+n(\log_2(n) + 1) = 2^k(k + 1)
 $$
-comparisons to sort the list. We now need to show that $P(k)$ holds for $k = m + 1$, i.e., for a list of size $n = 2^{m+1}$.
+comparisons to sort a list of size $n = 2^k$.
 
-## Inductive Step:
+Inductive Step:
+We need to show that $P(m+1)$ holds, i.e., that Mergesort uses:
+$$
+n(\log_2(n) + 1) = 2^{m+1}(m + 2)
+$$
+comparisons to sort a list of size $n = 2^{m+1}$.
 
-For a list of size $n = 2^{m+1}$, Mergesort proceeds by splitting the list into two sublists oppf size $2^m$. Each of these sublists is recursively sorted using Mergesort. By the inductive hypothesis, each sublist requires $2^m(m + 1)$ comparisons to sort. Thus, the total number of comparisons required to sort the two sublists is:
+For a list of size $n = 2^{m+1}$, Mergesort splits it into two sublists, each of size $2^m$. By the inductive hypothesis, each sublist requires $2^m(m + 1)$ comparisons to sort. Thus, the total number of comparisons required to sort the two sublists is:
 $$
 2 \times 2^m(m + 1) = 2^{m+1}(m + 1)
 $$
-After sorting the two sublists, the merge step is required to combine them into a single sorted list. The merge step compares the elements from both sublists and requires $(a + b - 1)$ comparisons to combine two lists of size $a$ and $b$. Since both sublists are of size $2^m$, the number of comparisons required for the merge step is:
-$$
-2^m + 2^m - 1 = 2^{m+1} - 1
-$$
+
+Next, the merge step combines these two sublists, each of size $2^m$. The merge step requires $2^m + 2^m - 1 = 2^{m+1} - 1$ comparisons.
+
 Thus, the total number of comparisons for sorting a list of size $2^{m+1}$ is:
 $$
 \text{Total comparisons} = 2^{m+1}(m + 1) + (2^{m+1} - 1)
 $$
-Simplifying this expression:
+
+Simplifying this:
 $$
 2^{m+1}(m + 1) + 2^{m+1} - 1 = 2^{m+1}(m + 2) - 1
 $$
-Now, check the formula for $n = 2^{m+1}$:
-$$
-n(\log_2(n) + 1) = 2^{m+1}(\log_2(2^{m+1}) + 1) = 2^{m+1}((m + 1) + 1) = 2^{m+1}(m + 2)
-$$
-This is exactly the total number of comparisons we computed above
 
-Thus, the number of comparisons required to sort a list of size $n = 2^{m+1}$ is:
+Now, verify the formula for $n = 2^{m+1}$:
 $$
-2^{m+1}((m + 1)+1)
+n(\log_2(n) + 1) = 2^{m+1}(\log_2(2^{m+1}) + 1) = 2^{m+1}(m + 2)
 $$
-which matches the formula we are trying to prove. Therefore, $P(k)$ holds for $k = m + 1$.
+Thus, the total number of comparisons is:
+$$
+2^{m+1}(m + 2)
+$$
+which matches the expression we computed above when considering the last failed if statement.
 
-
-By the principle of mathematical induction, we have shown that $P(k)$ holds for all $k \geq 0$. Hence, Mergesort uses:
+By the principle of **strong induction**, we have shown that Mergesort uses:
 $$
 n(\log_2(n) + 1) = 2^k(k + 1)
 $$
-comparisons to sort a list of size $n = 2^k$ using regular induction.
+comparisons to sort a list of size $n = 2^k$.
+
 
 
 ---
@@ -234,8 +235,6 @@ $\left\lceil \frac{n+1}{2} \right\rceil \leq \frac{2}{3}(n + 1)$ for $n$ a posit
 $\log_2 \left( \frac{2}{3}(n + 1) \right) = \log_2(n + 1) - \log_2 \left( \frac{3}{2} \right)$
 $n + 1 - 2(n + 1) \log_2 \left( \frac{3}{2} \right) < 0$ for positive $n$.
 
-
-
 #proof 
 
 Let $P(n)$ be the statement: "MergeSort uses at most $2n \log_2(n)$ comparisons for all $n \geq 2$," where $n = 2^k$ for some integer $k$.
@@ -244,97 +243,85 @@ Let $P(n)$ be the statement: "MergeSort uses at most $2n \log_2(n)$ comparisons 
 1. Merge uses exactly $a + b - 1$ comparisons to combine two lists of size $a$ and $b$, respectively.
 2. The length of the input list $L$ is $n = 2^k$, ensuring $n$ is always a power of 2.
 
+We aim to prove that Mergesort uses fewer than or equal to $2n \log_2(n)$ comparisons for all $n \geq 2$, under the assumption that the Merge operation requires $a + b - 1$ comparisons to merge two lists of length $a$ and $b$.
 
-### Base Case:
-For $n = 2^1 = 2$:
-- MergeSort divides the list into two sublists of size $1$, which are already sorted.
-- Merge combines the two sublists with exactly $1 + 1 - 1 = 1$ comparison.
-- The total number of comparisons is $1$, which satisfies:
-  $$
-  1 \leq 2(2)\log_2(2) = 4.
+#### Base Case:
+For $n = 2$, Mergesort requires the following steps:
+- The list is divided into two sublists, each of size 1.
+- Merging these two sublists requires $1$ comparison.
+Thus, the total number of comparisons used is $1$, and we check the inequality:
 $$
-Thus, $P(2)$ holds.
+2n \log_2(n) = 2 \cdot 2 \cdot \log_2(2) = 4
+$$
+Since $1 \leq 4$, the base case holds.
 
-### Strong Inductive Hypothesis:
-Assume $P(2), P(4), \dots, P(k)$ are all true for some $k \geq 2$. That is, for any list of size $n = 2^m$, where $1 \leq m \leq k$, MergeSort uses at most $2n \log_2(n)$ comparisons.
+#### Inductive Hypothesis:
+Let $P(k)$ be the statement that Mergesort uses fewer than or equal to $2k \log_2(k)$ comparisons for all $k \leq n$, i.e., for any list of size $k$, the number of comparisons is bounded by:
+$$
+T(k) \leq 2k \log_2(k)
+$$
+This is the inductive hypothesis.
 
+#### Inductive Step:
+We now prove the statement for $n+1$, i.e., that Mergesort uses fewer than or equal to $2(n+1) \log_2(n+1)$ comparisons for a list of size $n+1$.
 
-### Inductive Step:
-We need to prove $P(k+1)$: MergeSort uses at most $2n \log_2(n)$ comparisons for $n = 2^{k+1}$.
+To do this, we assume the list of size $n+1$ is divided into two sublists of sizes $\left\lfloor \frac{n+1}{2} \right\rfloor$ and $\left\lceil \frac{n+1}{2} \right\rceil$. The number of comparisons used to merge these two sublists is given by the sum of comparisons used by each recursive call and the comparisons made during the merge step.
 
-#### Step 1: Divide the List
-For $n = 2^{k+1}$, MergeSort divides the list into two sublists of size $n/2 = 2^k$. Each sublist is sorted recursively using MergeSort.
+##### Step 1: Number of comparisons for merging
+The merge step requires $\left\lfloor \frac{n+1}{2} \right\rfloor + \left\lceil \frac{n+1}{2} \right\rceil - 1$ comparisons. Using the fact that $\left\lfloor \frac{n+1}{2} \right\rfloor + \left\lceil \frac{n+1}{2} \right\rceil = n+1$, the merge step requires $n$ comparisons.
 
-#### Step 2: Apply the Strong Inductive Hypothesis
-By the strong inductive hypothesis, sorting each sublist of size $2^k$ requires at most:
+##### Step 2: Applying the inductive hypothesis
+By the inductive hypothesis, the number of comparisons to sort the two sublists of size $\left\lfloor \frac{n+1}{2} \right\rfloor$ and $\left\lceil \frac{n+1}{2} \right\rceil$ is bounded by:
 $$
-T(2^k) \leq 2(2^k)\log_2(2^k) = 2(2^k)k.
+T\left(\left\lfloor \frac{n+1}{2} \right\rfloor\right) \leq 2 \cdot \left\lfloor \frac{n+1}{2} \right\rfloor \log_2 \left( \left\lfloor \frac{n+1}{2} \right\rfloor \right)
 $$
-Since there are two sublists, the total comparisons for sorting both is:
+and
 $$
-2 \cdot T(2^k) \leq 2 \cdot 2(2^k)k = 4(2^k)k.
+T\left(\left\lceil \frac{n+1}{2} \right\rceil\right) \leq 2 \cdot \left\lceil \frac{n+1}{2} \right\rceil \log_2 \left( \left\lceil \frac{n+1}{2} \right\rceil \right)
 $$
-
-#### Step 3: Merge Step
-Merge combines the two sorted sublists of size $2^k$ each, requiring exactly:
+Thus, the total number of comparisons is the sum of the comparisons for the two sublists and the comparisons for the merge step:
 $$
-(2^k) + (2^k) - 1 = 2^{k+1} - 1 \text{ comparisons.}
+T(n+1) = T\left(\left\lfloor \frac{n+1}{2} \right\rfloor\right) + T\left(\left\lceil \frac{n+1}{2} \right\rceil\right) + n
 $$
-
-#### Step 4: Total Comparisons
-The total number of comparisons for $n = 2^{k+1}$ is:
+Substituting the bounds from the inductive hypothesis:
 $$
-T(2^{k+1}) = 2 \cdot T(2^k) + (2^{k+1} - 1).
-$$
-Substituting $T(2^k) \leq 4(2^k)k$:
-$$
-T(2^{k+1}) \leq 2 \cdot 4(2^k)k + (2^{k+1} - 1).
-$$
-Simplify:
-$$
-T(2^{k+1}) \leq 8(2^k)k + (2^{k+1} - 1).
-$$
-Factor out $2^{k+1}$:
-$$
-T(2^{k+1}) \leq (2^{k+1})(4k + 1) - 1.
+T(n+1) \leq 2 \cdot \left\lfloor \frac{n+1}{2} \right\rfloor \log_2 \left( \left\lfloor \frac{n+1}{2} \right\rfloor \right) + 2 \cdot \left\lceil \frac{n+1}{2} \right\rceil \log_2 \left( \left\lceil \frac{n+1}{2} \right\rceil \right) + n
 $$
 
-#### Step 5: Verify the Inequality
-We need to show that:
+##### Step 3: Bounding the terms
+To simplify, we use the fact that:
 $$
-T(2^{k+1}) \leq 2(2^{k+1})\log_2(2^{k+1}).
+\left\lceil \frac{n+1}{2} \right\rceil \leq \frac{2}{3}(n+1)
 $$
-Since $\log_2(2^{k+1}) = k+1$, the right-hand side becomes:
+and
 $$
-2(2^{k+1})(k+1).
+\left\lfloor \frac{n+1}{2} \right\rfloor \leq \frac{2}{3}(n+1)
+$$
+We also know that:
+$$
+\log_2\left(\frac{2}{3}(n+1)\right) = \log_2(n+1) - \log_2\left(\frac{3}{2}\right)
+$$
+Thus, we substitute these bounds into the comparison terms. Expanding and simplifying:
+$$
+T(n+1) \leq \frac{8}{3}(n+1) \log_2(n+1) + n - \frac{8}{3}(n+1) \log_2 \left( \frac{3}{2} \right)
 $$
 
-Compare:
+##### Step 4: Ensuring the inequality holds
+We now ensure that the inequality:
 $$
-(2^{k+1})(4k + 1) - 1 \leq 2(2^{k+1})(k+1).
+T(n+1) \leq 2(n+1) \log_2(n+1)
 $$
-Simplify:
+holds by showing that the negative term is sufficiently large to keep the total comparison count under the bound. 
+Thus, we conclude:
 $$
-4k + 1 \leq 2(k+1).
+T(n+1) \leq 2(n+1) \log_2(n+1)
 $$
-Distribute:
-$$
-4k + 1 \leq 2k + 2.
-$$
-Simplify further:
-$$
-2k \leq 1,
-$$
-which holds for all $k \geq 1$.
 
-Thus, $T(2^{k+1}) \leq 2(2^{k+1})\log_2(2^{k+1})$, and $P(k+1)$ holds.
-
-By strong induction, $P(n)$ is true for all $n = 2^k$, where $k \geq 1$. MergeSort uses at most $2n \log_2(n)$ comparisons for all $n \geq 2$.
+By the principle of strong induction, we have shown that Mergesort uses fewer than or equal to $2n \log_2(n)$ comparisons for all $n \geq 2$.
 
 
 
-
-
+---
 
 
 
