@@ -18,7 +18,10 @@ The cardinality can be found by counting the amount of relations, which is:
 ___
 ## 3.
 The relation can be described as a subset of a cartesian product. Which cartesian product does this refer to here and what is its cardinality?
+
 It can be described as a subset of the cartesian product of A, which is A x A.
+Set a contains 7 elements. $7*7 = 49$ so the cardinality of A x A is 49.
+
 ___
 ## 4.
 Decide whether the relation above is reflexive, symmetric, transitive, or antisymmetric. Explain why it has or does not have these properties. Consider what it means for a social network to have these properties.
@@ -35,15 +38,15 @@ A relation is antisymmetric if $(a,b) \in R~and~(b,a)∈R  ⟹  a=b$
 No pair $(a, b)$ exists where both (a, b) and $(b, a)$ are in R unless  $a = b$
 Relation is antisymmetric
 
-|     | A   | B   | C   | D   | E   | F   | G   |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| A   | 1   | 0   | 0   | 0   | 0   | 0   | 0   |
-| B   | 0   | 1   | 1   | 0   | 0   | 0   | 0   |
-| C   | 0   | 0   | 1   | 1   | 0   | 0   | 0   |
-| D   | 1   | 0   | 0   | 1   | 1   | 0   | 0   |
-| E   | 1   | 0   | 0   | 0   | 1   | 0   | 0   |
-| F   | 1   | 0   | 0   | 1   | 0   | 1   | 1   |
-| G   | 0   | 0   | 0   | 0   | 0   | 0   | 1   |
+|     | A   | B     | C     | D     | E   | F   | G   |
+| --- | --- | ----- | ----- | ----- | --- | --- | --- |
+| A   | 1   | 0     | 0     | 0     | 0   | 0   | 0   |
+| B   | 0   | 1     | 1 (a) | 0 (t) | 0   | 0   | 0   |
+| C   | 0   | 0 (s) | 1     | 1     | 0   | 0   | 0   |
+| D   | 1   | 0     | 0     | 1     | 1   | 0   | 0   |
+| E   | 1   | 0     | 0     | 0     | 1   | 0   | 0   |
+| F   | 1   | 0     | 0     | 1     | 0   | 1   | 1   |
+| G   | 0   | 0     | 0     | 0     | 0   | 0   | 1   |
 ___
 # Exercise 2
 One topic for discussion for the social media app is the idea that if someone publishes a post, it is re-published by everyone who follows them (a form of automatic retweet). The makers of the app can not decide whether this should 
@@ -83,7 +86,6 @@ $F_{Eve} = \{a \in A \mid (a, Abe) \in S^* \}$
 
 What do these sets describe? Which elements are in the sets $F_{Abe}$, $F_{Eve}$ and $F_{Abe} \cap F_{Eve}$.
 They describe a list that is defined from a, which is in A so that any element in the transitive closure of S and connected to Abe is in the relation.
-___
 ## 1.
 $S = (A,A),(B,B),(C,C),(D,D),(E,E),(F,F),(G,G),(B,C),(C,D),(D,E),(D,A),(E,A),(F,A),(F,D),(F,G)$
 $S* = (A,A),(B,A),(B,B),(B,C),(B,D),(B,E),(C,A),(C,C),(C,D),(C,E),(D,A),(D,D),(D,E),(E,A),(E,E),(F,A),(F,D),(F,E),(F,F),(F,G),(G,G)$
@@ -238,4 +240,4 @@ It is symmetric, reflexive and transitive, therefore $S^*$ is an equivalence rel
 | x          | ==**1**== | 1         | 1   | 0         |
 | y          | ==**1**== | ==**1**== | 1   | ==**1**== |
 | z          | 0         | 0         | 1   | 1         |
-It is symmetric, reflexing however not transitive therefore $T^\prime$ is not an equivalence relation
+It is symmetric, reflexive however not transitive therefore $T^\prime$ is not an equivalence relation
