@@ -321,9 +321,11 @@ $$
 
 By the principle of strong induction, we have shown that Mergesort uses fewer than or equal to $2n \log_2(n)$ comparisons for all $n \geq 2$.
 
-
-
 ---
+## iii)
+What type of induction did you use? What does the result tell us about the complexity of Mergesort in big-O notation?
+Strong induction to prove,
+The comparisons show that it is in O(log(n)), because constants are irrelevant.
 
 
 
