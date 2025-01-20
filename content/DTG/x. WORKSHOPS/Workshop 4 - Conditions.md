@@ -294,7 +294,7 @@ DNF:
 
  PDNF:
 - Visual: $(P(x) \land \neg Q(x))$
-- Explanation: It is in PDNF because it represents conjunctions of minterm.
+- Explanation: It is in PDNF because it represents conjunctions of all minterms.
 
  PCNF:
 - Explanation: It is not in PCNF because there are no maxterms (no disjunction of literals).
