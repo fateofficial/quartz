@@ -292,11 +292,11 @@ DNF:
 - Visual: $(P(x) \land \neg Q(x)) \lor \text{False}$
 - Explanation: This satisfies DNF because it is a **disjunction** of **conjunctions** (in this case, just one conjunction).
 
-### PDNF:
+ PDNF:
 - Visual: $(P(x) \land \neg Q(x))$
 - Explanation: It is in PDNF because it represents conjunctions of minterm.
 
-### PCNF:
+ PCNF:
 - Explanation: It is not in PCNF because there are no maxterms (no disjunction of literals).
 
 
