@@ -290,7 +290,7 @@ CNF:
 
 DNF:
 - Visual: $(P(x) \land \neg Q(x)) \lor \text{False}$
-- Explanation: This satisfies DNF because it is a **disjunction** of **conjunctions** (in this case, just one conjunction).
+- Explanation: This satisfies DNF because it is a disjunction of conjunctions (in this case, just one conjunction).
 
  PDNF:
 - Visual: $(P(x) \land \neg Q(x))$
@@ -298,6 +298,36 @@ DNF:
 
  PCNF:
 - Explanation: It is not in PCNF because there are no maxterms (no disjunction of literals).
+
+
+## 4)
+Formulate a proof by contradiction that shows that for all integers $x > 2$ the proposition $(P(x) \land \neg Q(x))$ is false. Hence show the following: Let $x > 2$ be an integer. Then $x$ can not be a prime and $\gcd(x, 2) \neq 1$.
+
+
+To prove the proposition $P(x) \wedge \neg Q(x)$ is false for all integers $x > 2$, and to show that for $x > 2$, $x$ cannot be a prime and $\gcd(x, 2) \neq 1$, we proceed by contradiction.
+
+Let $P(x)$ represent the statement "x is a prime number."
+Let $Q(x)$ represent the statement "$\gcd(x, 2) = 1$", i.e., $x$ is odd.
+
+Thus, the proposition $P(x) \wedge \neg Q(x)$ states that:
+	$x$ is a prime number, and
+	$x$ is not odd (i.e., $x$ is even).
+
+We want to prove by contradiction that this assumption leads to a contradiction. So, assume the opposite: $P(x) \wedge \neg Q(x)$ is true for some $x > 2$. This means:
+- $x$ is prime (i.e., $P(x)$ is true),
+- $x$ is even (i.e., $\neg Q(x)$ is true, meaning $\gcd(x, 2) \neq 1$).
+
+The only even prime number is 2. However, we assumed $x > 2$. Therefore, if $x > 2$, it cannot be prime and even at the same time. This leads to a contradiction.
+
+Thus, our assumption that $P(x) \wedge \neg Q(x)$ is true for some $x > 2$ is incorrect. Therefore, $P(x) \wedge \neg Q(x)$ must be false for all $x > 2$.
+
+Since $P(x) \wedge \neg Q(x)$ is false for all $x > 2$, we can conclude that:
+- $x$ cannot be a prime number, and
+- $\gcd(x, 2) \neq 1$.
+
+Therefore, for all integers $x > 2$, $x$ must be an even number greater than 2 (i.e., $x$ cannot be a prime number).
+
+
 
 
 
