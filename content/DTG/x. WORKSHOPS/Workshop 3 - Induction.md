@@ -165,7 +165,7 @@ We also verify the formula for $n = 1$:
 $$
 n(\log_2(n) + 1) = 1(\log_2(1) + 1) = 1(0 + 1) = 1
 $$
-Thus, the total number of comparisons is 0, which matches the behavior of the algorithm (since no merge step is required for a single-element list).
+Thus, the total number of comparisons is 0, which matches the behavior of the algorithm (since no merge step is required for a single-element list), however if statement fails.
 
 So, the base case holds: $P(0)$ is true.
 
@@ -209,9 +209,11 @@ Thus, the total number of comparisons is:
 $$
 2^{m+1}(m + 2)
 $$
+The difference of 1 comparisons can be explained from the first if statement that is not counted.
+
 which matches the expression we computed above when considering the last failed if statement.
 
-By the principle of **strong induction**, we have shown that Mergesort uses:
+By the principle of strong induction, we have shown that Mergesort uses:
 $$
 n(\log_2(n) + 1) = 2^k(k + 1)
 $$
