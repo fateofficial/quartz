@@ -282,9 +282,22 @@ Thus it shown that it is logically equivalent.
 ## 3) 
 Check if (2) is in CNF, DNF, PCNF and PDNF.
 
+$$P(x) \land \neg Q(x)$$
 
+CNF:
+- Visual: $(P(x) \lor \text{False}) \land (\neg Q(x) \lor \text{False})$
+- Explanation: A conjunction of disjunctions of literals.
 
+DNF:
+- Visual: $(P(x) \land \neg Q(x)) \lor \text{False}$
+- Explanation: This satisfies DNF because it is a **disjunction** of **conjunctions** (in this case, just one conjunction).
 
+### PDNF:
+- Visual: $(P(x) \land \neg Q(x))$
+- Explanation: It is in PDNF because it represents conjunctions of minterm.
+
+### PCNF:
+- Explanation: It is not in PCNF because there are no maxterms (no disjunction of literals).
 
 
 
